@@ -1,0 +1,451 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Blog &amp; Article Lab B1</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap">
+<style>
+/* Layout: cabecera fina + pestañas fijas; contenido a la izquierda (columna de lectura + panel lateral en escritorio). */
+:root {
+  --bg: #F4F5FA; --card: #FFFFFF; --ink: #101828; --muted: #536079; --line: #DDE1EC; --soft: #EDEFF8;
+  --accent: #4338CA; --accent-ink: #FFFFFF; --accent-soft: #E8E7FB;
+  --ok: #146C43; --ok-soft: #E1F3E8; --warn: #8F5400; --warn-soft: #FFF0D1; --bad: #B42318; --bad-soft: #FDE7E4;
+  --c-title: #7C3AED; --c-hook: #C2255C; --c-body: #2563EB; --c-tips: #0F766E; --c-concl: #B45309; --c-cta: #15803D;
+  --f-display: "Bricolage Grotesque", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --r: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C111F; --card: #151B2D; --ink: #E8ECF7; --muted: #9AA5BE; --line: #29324B; --soft: #1C2339;
+    --accent: #A5ABFF; --accent-ink: #0C111F; --accent-soft: #252C57;
+    --ok: #56D88F; --ok-soft: #14301F; --warn: #F4B63F; --warn-soft: #3A2B0C; --bad: #FF8A80; --bad-soft: #3D1A18;
+    --c-title: #B79CFF; --c-hook: #F58BB1; --c-body: #7FA8FF; --c-tips: #46D4C1; --c-concl: #F2B14B; --c-cta: #62D98A;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C111F; --card: #151B2D; --ink: #E8ECF7; --muted: #9AA5BE; --line: #29324B; --soft: #1C2339;
+  --accent: #A5ABFF; --accent-ink: #0C111F; --accent-soft: #252C57;
+  --ok: #56D88F; --ok-soft: #14301F; --warn: #F4B63F; --warn-soft: #3A2B0C; --bad: #FF8A80; --bad-soft: #3D1A18;
+  --c-title: #B79CFF; --c-hook: #F58BB1; --c-body: #7FA8FF; --c-tips: #46D4C1; --c-concl: #F2B14B; --c-cta: #62D98A;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; margin: 0; }
+h1, h2, h3, h4 { font-family: var(--f-display); line-height: 1.15; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+h1 { font-size: clamp(1.9rem, 4.6vw, 3rem); font-weight: 800; }
+h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 700; }
+h3 { font-size: 1.15rem; font-weight: 700; }
+h4 { font-size: 1rem; font-weight: 700; }
+p { margin: 0 0 .8em; }
+a { color: var(--accent); }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.muted { color: var(--muted); }
+.small { font-size: .875rem; }
+.xs { font-size: .78rem; }
+.up { text-transform: uppercase; letter-spacing: .08em; font-size: .72rem; font-weight: 700; color: var(--muted); }
+
+/* cabecera y pestañas */
+.top { background: var(--card); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.mark { width: 40px; height: 40px; border-radius: 10px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-family: var(--f-display); font-weight: 800; font-size: 1.05rem; flex: none; }
+.brand-name { font-family: var(--f-display); font-weight: 800; font-size: 1.15rem; line-height: 1.1; }
+.brand-sub { font-size: .78rem; color: var(--muted); }
+.top-right { display: flex; align-items: center; gap: 10px; }
+.meter { font-size: .8rem; color: var(--muted); text-align: right; line-height: 1.25; }
+.meter b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.tabsbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--card); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--card); z-index: 30; }
+.tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
+.tabs::-webkit-scrollbar { display: none; }
+.tabs a { flex: none; padding: 12px 14px; text-decoration: none; color: var(--muted); font-weight: 600; font-size: .92rem; border-bottom: 3px solid transparent; white-space: nowrap; }
+.tabs a:hover { color: var(--ink); }
+.tabs a[aria-current="page"] { color: var(--accent); border-bottom-color: var(--accent); }
+
+main { padding-block: 28px 80px; }
+.view { display: none; }
+.view.on { display: block; }
+.view > * + * { margin-top: 28px; }
+.sec-head { display: grid; gap: 6px; margin-bottom: 14px; }
+.sec-head p { color: var(--muted); margin: 0; max-width: 70ch; }
+
+@media (max-width: 600px) { .meter { display: none; } .brand-sub { font-size: .72rem; } }
+/* componentes */
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; }
+.card.flat { background: var(--soft); border-color: transparent; }
+.grid { display: grid; gap: 14px; }
+.g2 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+.g3 { grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.split { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 880px) { .split { grid-template-columns: minmax(0, 1fr); } }
+.row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-ink); padding: 9px 16px; border-radius: 10px; font-weight: 600; cursor: pointer; text-decoration: none; font-size: .95rem; }
+.btn:hover { filter: brightness(1.08); }
+.btn.sec { background: transparent; color: var(--accent); }
+.btn.sec:hover { background: var(--accent-soft); filter: none; }
+.btn.sm { padding: 5px 11px; font-size: .84rem; border-radius: 8px; }
+.btn[disabled] { opacity: .45; cursor: not-allowed; }
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font-size: .78rem; font-weight: 600; background: var(--soft); color: var(--muted); border: 1px solid transparent; }
+.chip.ok { background: var(--ok-soft); color: var(--ok); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); }
+.chip.bad { background: var(--bad-soft); color: var(--bad); }
+.chip.acc { background: var(--accent-soft); color: var(--accent); }
+.seg-ctl { display: inline-flex; background: var(--soft); border-radius: 10px; padding: 3px; gap: 2px; flex-wrap: wrap; }
+.seg-ctl button { border: 0; background: transparent; padding: 7px 14px; border-radius: 8px; font-weight: 600; cursor: pointer; color: var(--muted); font-size: .9rem; }
+.seg-ctl button[aria-pressed="true"] { background: var(--card); color: var(--accent); box-shadow: 0 1px 3px rgba(16, 24, 40, .14); }
+.pill-ctl { display: flex; gap: 6px; flex-wrap: wrap; }
+.pill-ctl button { border: 1px solid var(--line); background: var(--card); padding: 5px 12px; border-radius: 999px; font-size: .84rem; cursor: pointer; font-weight: 600; color: var(--muted); }
+.pill-ctl button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.field { display: grid; gap: 4px; }
+.field label { font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+select, input[type="text"], input[type="search"] { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; min-width: 0; max-width: 100%; }
+.bar { height: 8px; border-radius: 99px; background: var(--soft); overflow: hidden; }
+.bar > i { display: block; height: 100%; background: var(--accent); border-radius: 99px; }
+.bar.ok > i { background: var(--ok); } .bar.warn > i { background: var(--warn); } .bar.bad > i { background: var(--bad); }
+.tbl-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--r); background: var(--card); }
+table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: .92rem; }
+th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); background: var(--soft); }
+tr:last-child td { border-bottom: 0; }
+td:first-child { font-weight: 700; white-space: nowrap; }
+details { border: 1px solid var(--line); border-radius: var(--r); background: var(--card); }
+details > summary { cursor: pointer; padding: 12px 16px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+details > summary::-webkit-details-marker { display: none; }
+details > summary::after { content: "+"; font-size: 1.2rem; color: var(--muted); }
+details[open] > summary::after { content: "−"; }
+details > .inner { padding: 0 16px 16px; }
+ul.tight { margin: 0; padding-left: 1.15em; } ul.tight li { margin: 2px 0; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+svg.ic { width: 1em; height: 1em; vertical-align: -.125em; flex: none; }
+
+/* PLAN */
+.hero { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px; align-items: center; padding-block: 6px 8px; }
+@media (max-width: 880px) { .hero { grid-template-columns: minmax(0, 1fr); } }
+.hero p.lead { font-size: 1.12rem; color: var(--muted); max-width: 56ch; margin-block: 14px 20px; }
+.score-card .line { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; margin-block: 10px; align-items: end; }
+.score-card .line .bar { grid-column: 1 / -1; }
+.score-big { font-family: var(--f-display); font-weight: 800; font-size: 3rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.step { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 14px; align-items: start; padding: 14px 16px; }
+.step .n { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-weight: 800; font-size: .9rem; }
+.step.done .n { background: var(--ok-soft); color: var(--ok); }
+.time-line { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: var(--r); background: var(--card); overflow: hidden; }
+.time-line > div { padding: 14px 16px; border-right: 1px solid var(--line); }
+.time-line > div:last-child { border-right: 0; }
+.time-line b.min { font-family: var(--f-display); font-size: 1.4rem; color: var(--accent); display: block; }
+
+/* GÉNEROS / ESTRUCTURA */
+.pair { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: var(--r); background: var(--card); overflow: hidden; }
+.pair > div { padding: 14px 16px; }
+.pair > div:first-child { border-right: 1px solid var(--line); font-family: var(--f-body); }
+.pair > div:last-child { font-family: var(--f-serif); font-size: 1.06rem; }
+.pair + .pair { margin-top: 10px; }
+@media (max-width: 640px) { .pair { grid-template-columns: 1fr; } .pair > div:first-child { border-right: 0; border-bottom: 1px solid var(--line); } }
+.tag-b, .tag-a { display: block; font-family: var(--f-body); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
+.tag-b { color: var(--c-body); } .tag-a { color: var(--c-concl); }
+.p-title { --pc: var(--c-title); } .p-hook { --pc: var(--c-hook); } .p-body { --pc: var(--c-body); }
+.p-tips { --pc: var(--c-tips); } .p-concl { --pc: var(--c-concl); } .p-cta { --pc: var(--c-cta); }
+.dot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--pc); margin-right: 6px; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .82rem; color: var(--muted); }
+.model { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 22px clamp(16px, 3vw, 30px); }
+.model.is-article { font-family: var(--f-serif); font-size: 1.14rem; line-height: 1.7; }
+.model.is-blog { font-size: 1.04rem; }
+.model h3.mtitle { font-size: clamp(1.4rem, 3vw, 1.9rem); margin-bottom: 14px; }
+.model.is-article h3.mtitle { font-family: var(--f-serif); font-weight: 600; }
+.model p { margin: 0 0 1em; }
+.seg { background: color-mix(in srgb, var(--pc) 15%, var(--card)); border-bottom: 2px solid var(--pc); padding: 1px 2px; cursor: pointer; border-radius: 3px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.seg:hover, .seg.sel { background: color-mix(in srgb, var(--pc) 32%, var(--card)); }
+.note-list { display: grid; gap: 8px; }
+.note { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; padding: 10px 12px; border-left: 4px solid var(--pc); background: var(--card); border-radius: 0 10px 10px 0; border-top: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: .92rem; }
+.note.sel { background: color-mix(in srgb, var(--pc) 10%, var(--card)); }
+.part { border-left: 4px solid var(--pc); }
+.part summary b { font-family: var(--f-display); }
+.budget { display: flex; height: 30px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); font-size: .72rem; font-weight: 700; }
+.budget span { display: grid; place-items: center; background: color-mix(in srgb, var(--pc) 24%, var(--card)); color: var(--ink); white-space: nowrap; overflow: hidden; }
+.teel { display: grid; gap: 8px; }
+.teel > div { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: start; }
+.teel .r { font-family: var(--f-display); font-weight: 800; font-size: 1.8rem; line-height: 1; color: var(--accent); }
+.good { color: var(--ok); } .badc { color: var(--bad); }
+.cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 640px) { .cols2 { grid-template-columns: 1fr; } }
+.li-ok li::marker { color: var(--ok); } .li-bad li::marker { color: var(--bad); }
+
+/* CONECTORES */
+.conn-card h3 { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; font-size: 1.02rem; margin-bottom: 8px; }
+.conn { padding: 9px 0; border-top: 1px solid var(--line); }
+.conn:first-of-type { border-top: 0; }
+.conn .w { font-weight: 700; }
+.reg { font-size: .66rem; font-weight: 800; letter-spacing: .06em; padding: 1px 6px; border-radius: 5px; margin-left: 6px; vertical-align: 2px; }
+.reg.b { background: color-mix(in srgb, var(--c-body) 18%, var(--card)); color: var(--c-body); }
+.reg.a { background: color-mix(in srgb, var(--c-concl) 18%, var(--card)); color: var(--c-concl); }
+.reg.x { background: var(--soft); color: var(--muted); }
+.conn .ex { font-style: italic; color: var(--ink); }
+.trap { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: var(--r); background: var(--card); overflow: hidden; }
+.trap > div { padding: 10px 14px; }
+.trap .x { background: var(--bad-soft); } .trap .v { background: var(--ok-soft); }
+.trap .why { grid-column: 1 / -1; font-size: .86rem; color: var(--muted); border-top: 1px solid var(--line); }
+@media (max-width: 640px) { .trap { grid-template-columns: 1fr; } }
+
+/* PRÁCTICA */
+.setcard { display: grid; gap: 8px; align-content: space-between; }
+.setcard .meta { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
+.q-wrap { max-width: 780px; }
+.q-text { font-size: 1.2rem; font-weight: 600; margin-block: 8px 16px; font-family: var(--f-display); }
+.opts { display: grid; gap: 8px; }
+.opt { text-align: left; border: 1.5px solid var(--line); background: var(--card); border-radius: 10px; padding: 11px 14px; cursor: pointer; font-size: 1rem; display: flex; justify-content: space-between; gap: 10px; align-items: center; }
+.opt:hover:not([disabled]) { border-color: var(--accent); background: var(--accent-soft); }
+.opt.right { border-color: var(--ok); background: var(--ok-soft); }
+.opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.feedback { margin-top: 14px; padding: 12px 14px; border-radius: 10px; font-size: .95rem; }
+.feedback.ok { background: var(--ok-soft); } .feedback.bad { background: var(--bad-soft); }
+.feedback b { display: block; margin-bottom: 2px; }
+.typed { display: flex; gap: 8px; flex-wrap: wrap; }
+.typed input { flex: 1 1 220px; font-size: 1.05rem; }
+.ord { display: grid; gap: 8px; }
+.ord-item { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 8px 10px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--card); }
+.ord-item.right { border-color: var(--ok); background: var(--ok-soft); }
+.ord-item.wrong { border-color: var(--bad); background: var(--bad-soft); }
+.ord-item .no { font-weight: 800; color: var(--muted); text-align: center; }
+.ord-item .mv { display: flex; gap: 4px; }
+.mv button { border: 1px solid var(--line); background: var(--card); border-radius: 7px; width: 32px; height: 32px; cursor: pointer; }
+.mv button:hover:not([disabled]) { border-color: var(--accent); }
+.proof { font-family: var(--f-serif); font-size: 1.15rem; line-height: 2.1; padding: 16px 18px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); }
+.tok { cursor: pointer; border-radius: 5px; padding: 1px 2px; border: 0; background: transparent; font: inherit; color: inherit; }
+.tok:hover { background: var(--accent-soft); }
+.tok.sel { background: var(--warn-soft); box-shadow: inset 0 -2px 0 var(--warn); }
+.tok.found { background: var(--ok-soft); box-shadow: inset 0 -2px 0 var(--ok); }
+.tok.missed { background: var(--warn-soft); box-shadow: inset 0 -2px 0 var(--warn); }
+.tok.fp { background: var(--bad-soft); box-shadow: inset 0 -2px 0 var(--bad); text-decoration: line-through; }
+.run-top { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; }
+.summary-big { font-family: var(--f-display); font-size: 3.4rem; font-weight: 800; line-height: 1; }
+.rev { padding: 12px 14px; border-left: 4px solid var(--bad); background: var(--card); border-radius: 0 10px 10px 0; border: 1px solid var(--line); border-left-width: 4px; border-left-color: var(--bad); }
+
+/* TALLER */
+.lab { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+@media (max-width: 980px) { .lab { grid-template-columns: minmax(0, 1fr); } }
+.lab-col { display: grid; gap: 16px; min-width: 0; }
+.task { border-left: 4px solid var(--accent); }
+.task .en { font-family: var(--f-serif); font-size: 1.05rem; line-height: 1.6; }
+.pt { display: flex; gap: 8px; align-items: flex-start; padding: 6px 0; font-size: .9rem; }
+.pt label { display: flex; gap: 8px; align-items: flex-start; cursor: pointer; }
+textarea.ed { width: 100%; min-height: 380px; resize: vertical; background: var(--card); border: 1.5px solid var(--line); border-radius: var(--r); padding: 16px 18px; line-height: 1.7; font-size: 1.05rem; }
+textarea.ed:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px var(--accent-soft); }
+.counters { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: .86rem; color: var(--muted); font-variant-numeric: tabular-nums; }
+.counters b { color: var(--ink); }
+.banner { padding: 10px 14px; border-radius: 10px; background: var(--warn-soft); color: var(--warn); font-size: .9rem; display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
+.pgroup { margin-block: 8px; }
+.pgroup .up { margin-bottom: 4px; display: block; }
+.phr { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 3px 9px; font-size: .84rem; cursor: pointer; margin: 0 4px 4px 0; }
+.phr:hover { border-color: var(--accent); background: var(--accent-soft); }
+.report { position: sticky; top: 64px; }
+@media (max-width: 980px) { .report { position: static; } }
+.crit-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3px 10px; margin-block: 8px; }
+.crit-row .bar { grid-column: 1 / -1; }
+.chk { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 8px; padding: 9px 0; border-top: 1px solid var(--line); font-size: .9rem; }
+.chk .ic { margin-top: 3px; font-size: 1.1rem; }
+.chk.ok .ic { color: var(--ok); } .chk.warn .ic { color: var(--warn); } .chk.bad .ic { color: var(--bad); }
+.chk .tip { color: var(--muted); font-size: .84rem; margin-top: 2px; }
+.chk .pts { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .82rem; color: var(--muted); }
+.ecard { display: grid; gap: 4px; padding: 10px 0; border-top: 1px solid var(--line); font-size: .9rem; }
+.ecard .ctx { font-family: var(--f-serif); background: var(--soft); padding: 6px 10px; border-radius: 8px; overflow-wrap: anywhere; }
+.ecard mark, .marked mark.e { background: color-mix(in srgb, var(--bad) 22%, var(--card)); color: inherit; border-bottom: 2px solid var(--bad); border-radius: 3px; padding: 0 1px; }
+.marked { font-family: var(--f-serif); font-size: 1.05rem; line-height: 1.75; white-space: pre-wrap; overflow-wrap: anywhere; padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); }
+.marked mark.c { background: transparent; color: inherit; border-bottom: 2px solid var(--accent); }
+.marked mark.t { background: color-mix(in srgb, var(--warn) 18%, var(--card)); color: inherit; border-bottom: 2px dotted var(--warn); }
+.rpt-score { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+.honest { font-size: .82rem; color: var(--muted); }
+.cl { display: grid; gap: 6px; }
+.cl label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; font-size: .92rem; }
+.timer { font-variant-numeric: tabular-nums; font-weight: 700; }
+
+/* PROGRESO */
+.hist { display: grid; grid-template-columns: 110px minmax(0, 1fr) 44px; gap: 10px; align-items: center; font-size: .88rem; padding: 6px 0; }
+.empty { text-align: left; padding: 22px; border: 1.5px dashed var(--line); border-radius: var(--r); color: var(--muted); }
+.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 9px 16px; border-radius: 10px; font-size: .9rem; z-index: 50; max-width: calc(100% - 32px); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+
+</style>
+<header class="top"><div class="wrap"><div class="brand"><div class="mark" aria-hidden="true">B1</div><div><div class="brand-name">Blog &amp; Article Lab · B1</div><div class="brand-sub">Writing · 3º–4º ESO · travel, fashion y board games</div></div></div><div class="top-right"><div class="meter" id="meter"></div><button class="btn sec sm" id="themeBtn" type="button">Tema: auto</button></div></div></header>
+<div class="tabsbar"><div class="wrap"><nav class="tabs" id="tabs" aria-label="Secciones"><a href="#blog" data-v="blog">Blog post</a><a href="#article" data-v="article">Article</a><a href="#vocab" data-v="vocab">Vocab &amp; grammar</a><a href="#errors" data-v="errors">Error correction</a><a href="#lab" data-v="lab">Taller</a></nav></div></div>
+<main class="wrap" id="main"><section id="blog" class="view"></section><section id="article" class="view"></section><section id="vocab" class="view"></section><section id="errors" class="view"></section><section id="lab" class="view"></section></main>
+<script>
+const $=(s,r=document)=>r.querySelector(s),esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+let DB={st:{}};try{DB=JSON.parse(localStorage.getItem('lab-b1')||'null')||DB}catch(e){}
+const save=()=>{try{localStorage.setItem('lab-b1',JSON.stringify(DB))}catch(e){}};
+const TOP={travel:'Travel',fashion:'Fashion',games:'Board games'};
+const CAT={wo:'Word order',sv:'Subject-verb agreement',s3:'-s 3rd person',vd:'Verb + direct object',tn:'Tenses',ir:'Irregular pasts',pp:'Participles',hb:'Habits',cn:'Connectors',vc:'Vocabulary'};
+const RULE={wo:'Afirmativa: S + V + O (+ lugar + tiempo). Negativa: S + auxiliar + not + verbo base. Pregunta: (Wh-) + auxiliar + S + verbo base. Adverbios de frecuencia: antes del verbo, después de be.',
+sv:'El verbo concuerda con el sujeto: I am, he/she/it is, we/they are; there is + singular, there are + plural; people, clothes y parents son plurales.',
+s3:'Present simple: he/she/it + verbo con -s/-es (has, goes). Con does/doesn\'t, did/didn\'t el verbo va en base, sin -s.',
+vd:'Nunca separes verbo y objeto directo: I like music very much / I like it a lot. Lugar y tiempo van después del objeto.',
+tn:'yesterday / last / ago → past simple. since / for / ever / already / yet → present perfect (o present perfect continuous si la acción sigue). now / look! → present continuous. Planes → be going to. Predicciones → will. since + momento, for + duración. had + participio = antes de otro momento del pasado; will be + -ing = estará haciendo algo; will have + participio = habrá terminado antes de un momento futuro.',
+ir:'Los verbos irregulares no llevan -ed: go–went, buy–bought, take–took. Tras did / didn\'t va el verbo base.',
+pp:'Present perfect = have/has + participio: seen, done, been, gone, eaten, written… Ojo: have been to = haber estado (experiencia); have gone to = haber ido (y no estar de vuelta).',
+hb:'usually + present simple. used to + base (hábito pasado). be / get used to + -ing (estar / acostumbrarse). didn\'t use to + base.',
+cn:'because = causa, so = resultado. Con although no se usa but. On the other hand, in conclusion, however…',
+vc:'Collocations: take a photo / a trip, play a board game, go shopping, beat someone. Luggage, advice e information son incontables.'};
+const SENT=["I [not like|don't like|wo] spicy food when I travel.","[Where you are|Where are you|wo] going on holiday this summer?","We [always are|are always|wo] late for the airport.","There [is|are|sv] three dice in the box.","My parents [is|are|sv] packing the suitcases now.","Her clothes [is|are|sv] always very colourful.","[Was|Were|sv] you and your friends in Paris last summer?","He [don't|doesn't|s3] like flying.","She [play|plays|s3] chess every Sunday.","Does your sister [likes|like|s3] this hat?","My brother [have|has|s3] a new backpack.","I love [a lot travelling|travelling a lot|vd].",["She bought [yesterday a dress|a dress yesterday|vd] in a small shop.","Yesterday she bought a dress in a small shop."],"He plays [very well chess|chess very well|vd].","We visited [every year Rome|Rome every year|vd].","I [live|have lived|tn] in this city for ten years.","Yesterday we [have visited|visited|tn] the castle.","Look! It [rains|is raining|tn] and we haven't got umbrellas.","Next summer I [go|am going|tn] to visit my cousins. I have already bought the tickets.","I [am waiting|have been waiting|tn] for you for an hour!","When I [walked|was walking|tn] to the station, it started to rain.","I think it [is|will be|tn] sunny tomorrow.","By the time we got to the airport, the plane [left|had left|tn].","She was sad because she [lost|had lost|tn] her passport.","This time tomorrow I [fly|will be flying|tn] to Rome.","By next June I [will finish|will have finished|tn] my exams.","Last year we [goed|went|ir] to Lisbon.","She [buyed|bought|ir] a beautiful scarf.","They [didn't went|didn't go|ir] to the party.","I [taked|took|ir] hundreds of photos.","I have [saw|seen|pp] that film twice.","She has [wrote|written|pp] a long blog post.",["Have you ever [went|been|pp] to London?","Have you ever gone to London?"],"We haven't [eat|eaten|pp] paella yet.","He has [did|done|pp] his homework.","When I was a child, I [use to|used to|hb] play Monopoly every weekend.","I [didn't used to|didn't use to|hb] like travelling by plane.","I'm not used to [wake|waking|hb] up so early.","She usually [is wearing|wears|hb] jeans to school.","It was hard, but now I'm used to [wear|wearing|hb] a uniform.","I was tired [because of|because|cn] I got up at five.","The train was late, [because|so|cn] we missed the bus.","I love fashion. [In the other hand|On the other hand|cn], I don't have much money.","First we visited the museum. [At the end|Then|cn], we had lunch.","Although it was cold, [but we|we|cn] went to the beach.","I [did|took|vc] a lot of photos in Rome.","We [made|took|vc] a trip to Prague.","Let's [do|play|vc] a board game tonight.","I need some [advices|advice|vc] about what to wear.","My [luggages are|luggage is|vc] very heavy.","He [won|beat|vc] me at chess."];
+const PARA=[["Blog · travel","Last summer I [goed|went|ir] to Edinburgh with my family. We [taked|took|ir] hundreds of photos and [visited every day a castle|visited a castle every day|vd]. My brother [don't|doesn't|s3] like walking, [because|so|cn] he was always tired. My parents [is|are|sv] used to [walk|walking|hb] a lot, but I'm not. We have [ate|eaten|pp] fish and chips three times! I [use to|used to|hb] hate fish, but now I love it."],["Article · fashion","Today, many teenagers [buys|buy|sv] second-hand clothes. There are two main reasons. Firstly, it [are|is|sv] cheaper: a good jacket [cost|costs|s3] half the price. Although some people think old clothes are dirty, [but||cn] many shops wash everything. [In the other hand|On the other hand|cn], fast fashion [have|has|sv] a big problem: it [use|uses|s3] a lot of water. Last year, a survey [has shown|showed|tn] that most young people [is|are|sv] worried about it. [At the end|In conclusion|cn], second-hand fashion is a smart choice."]];
+function parse(t){const segs=[],errs=[],toks=[];let last=0;const add=(x,e)=>x.split(/(\s+)/).forEach(y=>y&&toks.push({t:y,e,w:/[A-Za-z0-9]/.test(y)}));
+t.replace(/\[([^|\]]*)\|([^|\]]*)\|(\w+)\]/g,(m,w,r,c,i)=>{if(i>last){segs.push({t:t.slice(last,i)});add(t.slice(last,i),null)}errs.push({w,r,c});segs.push({t:w,r,e:errs.length-1});add(w,errs.length-1);last=i+m.length;return m});
+segs.push({t:t.slice(last)});add(t.slice(last),null);const cl=x=>x.replace(/\s+/g,' ').replace(/\s+([,.!?;:])/g,'$1').trim();
+return{errs,toks,wrong:cl(segs.map(x=>x.t).join('')),right:cl(segs.map(x=>x.e==null?x.t:x.r).join(''))}}
+const ITEMS=SENT.map(x=>Array.isArray(x)?{...parse(x[0]),alts:x.slice(1)}:parse(x)),PARAS=PARA.map(p=>({n:p[0],...parse(p[1])}));
+const GEN={
+blog:{name:'Blog post',min:100,max:140,lead:'Un blog post es informal y personal: hablas con tus lectores como con un amigo. Cuenta una experiencia, da consejos y termina con una pregunta.',
+parts:[['title','Title',`My Weekend in Valencia: Paella, Beaches and Bad Luck`,'Corto, personal y con curiosidad.'],['hook','Hook',`Have you ever lost your suitcase on holiday? I have!`,'Una pregunta o frase corta para empezar.'],['body','Story',`Last month I went to Valencia with my family. We got there by plane, but my suitcase didn't arrive. At first I was angry, but then I bought a cool T-shirt and a hat in a small shop. I usually take too many clothes, so I didn't miss them much!`,'Past simple para contar; usually / used to para hábitos. Conectores: but, then, so.'],['tips','Tips',`My tip: always put a change of clothes in your hand luggage. Also, take a photo of your suitcase before you travel.`,'Consejos con imperativo + also.'],['concl','Ending',`In the end, it was one of my best trips. I have never laughed so much on holiday!`,'Present perfect para una experiencia.'],['cta','Reader question',`What about you? Have you ever lost something on a trip? Tell me in the comments!`,'Termina siempre hablando con el lector.']],
+conn:[['Añadir',['and|I bought a hat and a scarf.','also|I also tried the local food.','too|It was cheap, too.']],['Contraste',['but|It was cold, but we had fun.','although|Although it was late, we kept playing.']],['Causa y resultado',['because|I was tired because I got up early.','so|The train was late, so we missed the bus.']],['Orden',['first / then|First we ate, then we walked.','after that|After that, we went to the hotel.','finally|Finally, we found the shop.']],['Blog style',['anyway|Anyway, that was my trip!','by the way|By the way, the food was great.','in the end|In the end, we won!']]],
+phr:[`Hi everyone!`,`Guess what?`,`You won't believe what happened!`,`Let me tell you about…`,`My top tip is…`,`I can't wait to…`,`What do you think? Leave a comment!`],
+tasks:{travel:`Write about a trip with a problem. Tell what happened (past simple), say what you usually do when you travel (usually / used to) and ask your readers a question.`,fashion:`Write about your style. Say what you usually wear, what you used to wear when you were younger and give one tip. Use the present perfect (I have just bought…).`,games:`Write about your favourite board game. Explain how you play (present simple), tell about a game you played last weekend (past simple) and invite your readers to play.`}},
+article:{name:'Article',min:120,max:160,lead:'Un article es más neutro y ordenado: presenta un tema con razones, ejemplos, un contraargumento y una conclusión. Evita contracciones y habla de "people / teenagers".',
+parts:[['title','Title',`Why Do Teenagers Love Second-Hand Clothes?`,'Una pregunta o un tema claro.'],['hook','Introduction',`Ten years ago, many teenagers bought their clothes in big shops. Today, more and more young people are choosing second-hand clothes. Is it really a good idea?`,'Contraste pasado / presente + pregunta.'],['tips','Counter-argument',`We can find people who think that second-hand clothes are dirty, old or not fashionable, and it is true that some shops may sell clothes in bad condition.`,'Un hecho en contra de tu tesis. Une las dos ideas con and + it is true that.'],['body','2 reasons in favour',`However, there are two good reasons to buy them. Firstly, it is cheaper: a good jacket costs half the price, so teenagers can buy more things. Secondly, it is better for the planet. For example, factories use a lot of water to make new jeans.`,'However (una sola vez) + firstly / secondly + for example.'],['concl','Conclusion',`In conclusion, second-hand fashion is cheap, original and good for the environment. Teenagers who are used to buying new clothes should try it. Perhaps they will find their new favourite jacket.`,'In conclusion + recomendación (will / should).']],
+conn:[['Añadir',['in addition|In addition, it is good for the planet.','also|Also, it saves money.']],['Contraste',['however|Some people disagree. However, there are two good reasons.','on the other hand|On the other hand, it is expensive.','although|Although it is old, it looks great.']],['Causa y resultado',['because|Many people buy it because it is cheap.','so|It is cheap, so teenagers buy more.','as a result|As a result, sales went up.']],['Orden y ejemplos',['firstly / secondly|Firstly, it is cheap. Secondly…','for example|For example, jeans use a lot of water.','such as|Items such as scarves and hats.']],['Conclusión',['in conclusion|In conclusion, it is a good idea.','to sum up|To sum up, games bring people together.']]],
+phr:[`Nowadays, …`,`More and more people…`,`There are two main reasons.`,`Some people think that…, but…`,`For example, …`,`It is important to…`,`In conclusion, …`],
+tasks:{travel:`"Is it better to travel with family or with friends?" Give two reasons, one example and a conclusion. Use however, for example and in conclusion.`,fashion:`"Why are second-hand clothes popular?" Start with one fact against your idea, then give two reasons in favour. Use the present perfect and a future form (will / going to).`,games:`"Board games or video games?" Start with one fact against your idea, then give two reasons in favour and a conclusion.`}}};
+const T=(w,c)=>{const[x,y]=w.split('=');return`<span class="chip ${c}"><b>${x}</b> ${y}</span>`};
+const EXAM=[['🫀 Parts of the Body','neck=cuello|wrist=muñeca|ankle=tobillo|knee=rodilla|elbow=codo|thumb=pulgar|shoulder=hombro|back=espalda|spine=columna vertebral|intestines=intestinos|lungs=pulmones|brain=cerebro|heart=corazón|stomach=estómago|ribs=costillas|chin=barbilla|toe=dedo del pie|muscles=músculos','joint=articulación|limb=extremidad|tendon=tendón|nostrils=fosas nasales|knuckles=nudillos|calf=gemelo|artery=arteria'],
+['🤒 Health & Illness','worse=peor|gets better=mejora|sneeze=estornudar|pain=dolor|bleed=sangrar|upset=disgustado / revuelto|dizzy=mareado|temperature=fiebre / temperatura|tablet=pastilla|headache=dolor de cabeza|cold=resfriado|bandage=venda|sore throat=dolor de garganta|sting=picadura (de abeja)|bite=mordedura / picadura|flu=gripe|arthritis=artritis|to vomit=vomitar','bruise=moratón|rash=sarpullido|contagious=contagioso|sprain=esguince|a prescription=una receta médica|a scar=una cicatriz|swollen=hinchado'],
+['🥗 Food & Nutrition','calories=calorías|vitamins=vitaminas|healthy=saludable|protein=proteína|sour=agrio|raw=crudo|fried=frito|frozen=congelado|sweet=dulce|boiled=hervido|wholegrain=integral|salty=salado|bitter=amargo|baked=al horno|spicy=picante|fresh=fresco|carbohydrates=carbohidratos|tasty=sabroso','nutritious=nutritivo|savoury=salado (no dulce)|stale=rancio / duro|ripe=maduro|processed=procesado|organic=ecológico|crunchy=crujiente'],
+['🎭 Adjectives: People & Things','nasty=desagradable|cheerful=alegre|anxious=ansioso|amusing=divertido|neat=ordenado|messy=desordenado|careless=descuidado|courageous=valiente|awful=horrible|ridiculous=ridículo|ancient=antiguo|truthful=sincero|thrilling=emocionante|imaginary=imaginario|incredible=increíble|predictable=predecible|efficient=eficiente|ordinary=normal|sensible=sensato|sensitive=sensible|proud=orgulloso|pleasant=agradable|relaxed=relajado|giant=gigante|unimportant=sin importancia|hopeful=esperanzado','stubborn=terco|arrogant=arrogante|witty=ingenioso|tedious=tedioso|gullible=crédulo|resilient=resiliente|meticulous=meticuloso'],
+['🏕 Travel & Camping','put up=montar (tienda)|build=construir|pack=hacer la maleta|plan=planear|go=ir|spend=gastar / pasar|make=hacer|book=reservar|take=tomar / coger|find=encontrar|a passport=un pasaporte|at the check-in desk=en el mostrador de facturación|luggage=equipaje|departure=salida|at the gate=en la puerta de embarque|a campsite=un camping|backpacking=viajar con mochila|flight=vuelo','itinerary=itinerario|a boarding pass=tarjeta de embarque|accommodation=alojamiento|sightseeing=turismo'],
+['👗 Fashion','brand=marca|clothing=ropa|compliment=cumplido|frames=monturas|glamorous=glamuroso|hoodie=sudadera con capucha|layer=capa|range=gama|sleeve=manga|stylish=con estilo|handbag=bolso|jumper=jersey|raincoat=impermeable|deliver=entregar|plain=liso|price tag=etiqueta del precio|ripped=roto|sleeveless=sin mangas|suit=quedar bien|swap=intercambiar|zip=cremallera|belt=cinturón|boots=botas|gloves=guantes|jacket=chaqueta|scarf=bufanda|umbrella=paraguas|dress=vestido|glasses=gafas|hat=sombrero|jeans=vaqueros|shirt=camisa|shoes=zapatos|shorts=pantalones cortos|skirt=falda|socks=calcetines|sunglasses=gafas de sol|sweater=suéter|tie=corbata|tights=medias|tracksuit=chándal|trainers=zapatillas|trousers=pantalones|T-shirt=camiseta|wallet=cartera|watch=reloj',''],
+['🎲 Games','to assess=evaluar|to boost=impulsar|to cheat=hacer trampas|to daydream=soñar despierto|to draw a conclusion=sacar una conclusión|figure out=averiguar|to focus=concentrarse|to gamble=apostar|make an effort=esforzarse|to read someone\'s mind=leer la mente|to recall=recordar|to recognise=reconocer|to remind=recordar a alguien|to suspect=sospechar|take turns=turnarse|think over=reflexionar|dice=dados|board game=juego de mesa|score=puntuación|level=nivel|challenge=reto|strategy=estrategia|sound effects=efectos de sonido|snake=serpiente|ladder=escalera|to replace=sustituir|to discover=descubrir','opponent=oponente|to bluff=farolear|tournament=torneo|to outwit=ser más listo que|addictive=adictivo'],
+['🧳 Travel','airline=aerolínea|to board=embarcar|check in=facturar|crew=tripulación|delay=retraso|fabulous=fabuloso|flight attendant=auxiliar de vuelo|full board=pensión completa|gate=puerta de embarque|half board=media pensión|high season=temporada alta|in advance=con antelación|lively=animado|luxurious=lujoso|on a budget=con presupuesto ajustado|overcrowded=abarrotado|rate=tarifa|unforgettable=inolvidable|within walking distance=a poca distancia andando|youth hostel=albergue juvenil|to book=reservar|accommodation=alojamiento|tour=excursión|destination=destino','itinerary=itinerario|landmark=lugar emblemático|jet lag=desfase horario|layover=escala|off the beaten track=fuera de los circuitos turísticos'],
+['🤓 Word fields','performance=actuación / rendimiento|performer=artista|perform a task=realizar una tarea|perform well=rendir bien|performing arts=artes escénicas|end=terminar / final|finish=acabar|grow bored of=aburrirse de|grow tired of=cansarse de|grow old=envejecer|grow up=crecer|grow a beard=dejarse barba|grow a business=hacer crecer un negocio|lose=perder|loose=suelto|rip=rasgar|pop=estallar|crash=chocar|splash=salpicar|bang=estruendo|tick=tictac / marca|choice=elección|choose=elegir','']].map(([t,a,b])=>[t,a.split('|'),b?b.split('|'):[]]);
+const EXAM_OLD=[['🎭 Adjectives: People & Things','nasty cheerful anxious amusing neat messy careless courageous awful ridiculous ancient truthful thrilling imaginary incredible predictable efficient ordinary sensible sensitive proud pleasant relaxed giant unimportant hopeful'.split(' '),'stubborn arrogant witty tedious gullible resilient meticulous'.split(' ')],['🏕 Travel & Camping',['put up','build','pack','plan','go','spend','make','book','take','find','a passport','at the check-in desk','luggage','departure','at the gate','a campsite','backpacking','flight'],['itinerary','a boarding pass','accommodation','sightseeing']]];
+const DIFF=[['Tono','Informal, como hablando con un amigo','Neutro, más serio'],['Contracciones',`Sí: I'm, didn't, it's`,'Mejor no: I am, did not'],['Personas','I, you, we','people, teenagers, they'],['Estructura','Hook → story → tips → question','Intro → counter-argument → 2 reasons in favour → conclusion'],['Conectores','so, because, then, anyway','however, for example, in addition, in conclusion'],['Final','Pregunta a los lectores','Conclusión y recomendación']];
+const VOC={travel:['suitcase=maleta','luggage=equipaje','passport=pasaporte','ticket=billete','flight=vuelo','trip=viaje','journey=trayecto','hotel=hotel','sightseeing=turismo','souvenir=recuerdo','delay=retraso','book=reservar','pack=hacer la maleta','abroad=al extranjero','destination=destino'],
+fashion:['jacket=chaqueta','trainers=zapatillas','scarf=bufanda','fashionable=de moda','second-hand=de segunda mano','brand=marca','fit=quedar (talla)','suit=sentar bien','wear=llevar puesto','try on=probarse','trend=tendencia','style=estilo','outfit=conjunto','cheap=barato','sleeve=manga'],
+games:['board game=juego de mesa','dice=dados','card=carta','piece=ficha','player=jugador','turn=turno','rule=regla','win=ganar','lose=perder','beat=ganar a alguien','tie=empate','team=equipo','strategy=estrategia','cheat=hacer trampas','fun=divertido']};
+const TEN=[['Present simple','S + V(s) / do(es)n\'t','She usually wears jeans.'],['Present continuous','am / is / are + -ing',`I'm packing my bag now.`],['Past simple','V-ed / irregular · did(n\'t) + base','We went to Rome last year.'],['Past continuous','was / were + -ing','I was walking when it rained.'],['Present perfect','have / has + participle','I have never played Catan.'],['Present perfect continuous','have / has been + -ing','I have been waiting for an hour.'],['Future','will · be going to + base',`I'm going to buy a hat. It will be fun.`],['Past perfect','had + participle','When we arrived, the train had already left.'],['Future continuous','will be + -ing','This time tomorrow I will be flying to Rome.'],['Future perfect','will have + participle','By Friday I will have finished my packing.'],['Habits','usually · used to + base','I used to hate fish.'],['Be / get used to','be / get used to + -ing',`I'm used to waking up early.`]];
+const IRR='be,was / were,been;buy,bought,bought;come,came,come;do,did,done;drink,drank,drunk;eat,ate,eaten;fly,flew,flown;forget,forgot,forgotten;get,got,got;give,gave,given;go,went,gone / been;have,had,had;lose,lost,lost;make,made,made;meet,met,met;read,read,read;ride,rode,ridden;run,ran,run;see,saw,seen;sing,sang,sung;sleep,slept,slept;speak,spoke,spoken;swim,swam,swum;take,took,taken;wear,wore,worn;win,won,won;write,wrote,written'.split(';').map(x=>x.split(','));
+const CN=['also','but','however','although','because','so','first','then','after that','finally','in the end','anyway','in addition','on the other hand','as a result','firstly','secondly','for example','such as','in conclusion','to sum up','by the way'];
+const ing=v=>({get:'getting',be:'being',run:'running'})[v]||v.replace(/e$/,'')+'ing';
+const s3=v=>v=='have'?'has':/(s|sh|ch|x|o)$/.test(v)?v+'es':v+'s';
+const REGV={goed:'went',buyed:'bought',eated:'ate',taked:'took',maked:'made',comed:'came',gived:'gave',runned:'ran',writed:'wrote',haved:'had',winned:'won',wored:'wore',finded:'found',losed:'lost',thinked:'thought',knowed:'knew',drinked:'drank',bringed:'brought',payed:'paid',speaked:'spoke'};
+const BASE={went:'go',saw:'see',ate:'eat',took:'take',had:'have',made:'make',bought:'buy',came:'come',got:'get',gave:'give',ran:'run',wrote:'write',found:'find',lost:'lose',won:'win',wore:'wear'};
+const PPM={went:'gone/been',saw:'seen',ate:'eaten',took:'taken',did:'done',wrote:'written',ran:'run',came:'come',was:'been',were:'been',wore:'worn',began:'begun',drank:'drunk',flew:'flown',gave:'given',spoke:'spoken',drove:'driven',swam:'swum',sang:'sung',forgot:'forgotten',broke:'broken',chose:'chosen'};
+const V3='go|do|like|love|play|want|live|work|travel|wear|need|think|know|make|take|get|come|use|look|buy|enjoy|prefer|watch|visit|speak|eat|have|read';
+const L=x=>x.toLowerCase();
+const RULES=[
+[/\b(he|she|it)\s+(don't|do not)\b/gi,'s3',(m,a)=>a+" doesn't"],
+[new RegExp('(?<!\\b(?:let|make|help|watch|see|hear)\\s)\\b(he|she|it)\\s+('+V3+')\\b','gi'),'s3',(m,a,v)=>a+' '+s3(L(v))],
+[/\b(we|they|you)\s+(was|has)\b/gi,'sv',(m,a,v)=>a+(L(v)=='was'?' were':' have')],
+[/\b(he|she|it)\s+(were|are)\b/gi,'sv',(m,a,v)=>a+(L(v)=='were'?' was':' is')],
+[/\bI\s+(is|are)\b/g,'sv',()=>'I am'],
+[/\bthere\s+is\s+(many|two|three|four|five|six|some|several|a lot of)\b/gi,'sv',(m,a)=>'there are '+a],
+[/\b(clothes|people|friends|parents|shoes)\s+is\b/gi,'sv',(m,a)=>a+' are'],
+[new RegExp('\\b('+Object.keys(REGV).join('|')+')\\b','gi'),'ir',m=>REGV[L(m)]],
+[/\b(did|didn't|did not)\s+(went|saw|ate|took|had|made|bought|came|got|gave|ran|wrote|found|lost|won|wore)\b/gi,'ir',(m,a,v)=>a+' '+BASE[L(v)]],
+[/\b(did|didn't|did not)\s+([a-z]{3,}ed)\b/gi,'ir',(m,a,v)=>/^(need|feed|speed)ed?$/.test(L(v))||/^(need|feed|speed)$/.test(L(v))?m:null],
+[/\b(have|has|haven't|hasn't)\s+(went|saw|ate|took|did|wrote|ran|came|was|were|wore|began|drank|flew|gave|spoke|drove|swam|sang|forgot|broke|chose)\b/gi,'pp',(m,a,v)=>a+' '+PPM[L(v)]],
+[/\b(like|love|enjoy|play|visit|buy|wear|prefer)\s+(very much|a lot)\s+((?:the|my|your|his|her|our|their|a|an|board|[a-z]+ing)\b(?:\s+\w+)?)/gi,'vd',(m,v,adv,o)=>v+' '+o+' '+adv],
+[/\b(usually|always|often|never|sometimes)\s+(am|is|are)\b/gi,'wo',(m,a,b)=>b+' '+a],
+[/\b(I|we|they|you|he|she|it)\s+not\s+(like|go|play|have|want|know|think|speak|travel|wear)\b/gi,'wo',(m,s,v)=>s+(/^(he|she|it)$/i.test(s)?" doesn't ":" don't ")+v],
+[/\b(where|what|when|why|how|which)\s+(I|you|he|she|it|we|they)\s+(are|is|am|do|does|did|can|have|has|will|was|were)\b/gi,'wo',(m,w,s,a)=>w+' '+a+' '+s,1],
+[/\b(am|is|are|get|got)\s+used\s+to\s+(go|travel|play|wear|eat|have|live|be|wake|get|do|read|walk)\b/gi,'hb',(m,a,v)=>a+' used to '+ing(L(v))],
+[/\b(didn't|did not)\s+used\s+to\b/gi,'hb',(m,a)=>a+' use to'],
+[/\b(I|we|they|you|he|she|it)\s+use\s+to\b/gi,'hb',(m,a)=>a+' used to'],
+[/(?<!(?:am|is|are|get|got|gets|be|been|['’]m|['’]re|['’]s|getting)\s)\bused\s+to\s+\w+ing\b/gi,'hb',null],
+[/\bsince\s+(a|an|one|two|three|four|five|six|several|\d+)\s+(day|week|month|year|hour)s?\b/gi,'tn',m=>m.replace(/^since/i,'for')],
+[/\b(yesterday|last\s+\w+|\w+\s+ago)\b[^.!?]*?\b(have|has)\s+(?!to\b)\w+/gi,'tn',null],
+[/\b(will|can|must|should|could|would)\s+to\b/gi,'tn',(m,a)=>a],
+[/\b(am|is|are)\s+going\s+(?!to\b)(visit|buy|play|travel|go|see|wear|try|take|have)\b/gi,'tn',(m,a,v)=>a+' going to '+v],
+[/\b(am|is|are)\s+(play|go|travel|wear|visit|buy|eat|watch|read|wait|stay)\b/gi,'tn',(m,a,v)=>a+' '+ing(L(v))],
+[/\bbecause\s+of\s+(I|he|she|we|they|it)\b/gi,'cn',(m,s)=>'because '+s],
+[/\bin\s+the\s+other\s+hand\b/gi,'cn',()=>'On the other hand'],
+[/\balthough\b[^.!?]*?,?\s+but\b/gi,'cn',m=>m.replace(/,?\s+but\b/i,'')],
+[/\b(do|make|did|made|doing|making)\s+(a\s+|some\s+|many\s+|lots of\s+)?(photos?|pictures?)\b/gi,'vc',(m,v,q,p)=>({do:'take',did:'took',make:'take',made:'took',doing:'taking',making:'taking'})[L(v)]+' '+(q||'')+p],
+[/\b(do|make)\s+(a\s+)?(trip|journey)\b/gi,'vc',(m,v,a,t)=>'take '+(a||'')+t],
+[/\b(do|does|did|doing)\s+(a\s+)?(board\s+games?|chess|monopoly)\b/gi,'vc',(m,v,a,g)=>({do:'play',does:'plays',did:'played',doing:'playing'})[L(v)]+' '+(a||'')+g],
+[/\b(an?)\s+(advice|luggage|baggage|information)\b/gi,'vc',(m,a,w)=>'some '+w],
+[/\b(advices|informations|luggages|baggages)\b/gi,'vc',m=>m.slice(0,-1)],
+[/\bwin\s+(me|you|him|her|them|us)\b/gi,'vc',(m,o)=>'beat '+o],
+[/\bgo\s+to\s+the\s+shopping\b/gi,'vc',()=>'go shopping']];
+const norm=x=>x.toLowerCase().replace(/[’]/g,"'").replace(/[.,!?;:]/g,'').replace(/\s+/g,' ').trim();
+const rec=(c,ok)=>{const o=DB.st[c]||(DB.st[c]={ok:0,n:0});o.n++;if(ok)o.ok++;save();meter()};
+function meter(){let a=0,n=0;Object.values(DB.st).forEach(o=>{a+=o.ok;n+=o.n});$('#meter').innerHTML=n?`Aciertos <b>${a}/${n}</b>`:''}
+/* VIEWS */
+function renderGenre(id){const G=GEN[id];$('#'+id).innerHTML=`<div class="sec-head"><h2>${G.name}</h2><p>${G.lead}</p></div>
+<div class="split"><div class="model is-${id}"><h3 class="mtitle">${G.parts[0][2]}</h3>${G.parts.slice(1).map(p=>`<p class="p-${p[0]}"><span class="seg">${p[2]}</span></p>`).join('')}</div>
+<div class="note-list">${G.parts.map(p=>`<div class="note p-${p[0]}"><span class="dot"></span><div><b>${p[1]}</b><br><span class="small muted">${p[3]}</span></div></div>`).join('')}</div></div>
+<div><h3>Blog post vs Article</h3><div class="tbl-wrap" style="margin-top:10px"><table><tr><th></th><th>Blog post</th><th>Article</th></tr>${DIFF.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</table></div></div>
+<div><h3>Conectores</h3><div class="grid g3" style="margin-top:10px">${G.conn.map(c=>`<div class="card conn-card"><h3>${c[0]}</h3>${c[1].map(x=>{const[w,e]=x.split('|');return`<div class="conn"><span class="w">${w}</span><br><span class="ex">${e}</span></div>`}).join('')}</div>`).join('')}</div></div>
+<div class="card"><h3>Frases útiles</h3><div class="row" style="margin-top:10px">${G.phr.map(p=>`<span class="chip acc">${p}</span>`).join('')}</div></div>
+<div class="card task"><h3>Tu turno · ${G.min}–${G.max} palabras</h3>${Object.entries(TOP).map(([k,n])=>`<p><b>${n}:</b> <span class="en">${G.tasks[k]}</span></p>`).join('')}<a class="btn" href="#lab" data-g="${id}">Ir al taller</a></div>`}
+function renderVocab(){$('#vocab').innerHTML=`<div class="sec-head"><h2>Vocabulary &amp; grammar</h2><p>Todo lo que necesitas para escribir: palabras de los tres temas, tiempos verbales, orden de la frase y verbos irregulares.</p></div>
+<div><h3>Vocabulario del examen</h3><p class="muted small">Todo esto entra en el examen. Las palabras con ⭐ son B2 extra (reto para los más fuertes).</p><div class="grid g2" style="margin-top:10px">${EXAM.map(([t,a,b])=>`<div class="card"><h3>${t}</h3><div class="row" style="margin-top:10px;gap:6px">${a.map(w=>T(w,'acc')).join('')}</div>${b.length?`<p class="up" style="margin-top:14px">⭐ B2 extra</p><div class="row" style="margin-top:8px;gap:6px">${b.map(w=>T(w,'warn')).join('')}</div>`:''}</div>`).join('')}</div></div>
+<div class="grid g3">${Object.entries(VOC).map(([k,a])=>`<div class="card"><h3>${TOP[k]}</h3><div class="row" style="margin-top:10px;gap:6px">${a.map(x=>{const[w,g]=x.split('=');return`<span class="chip"><b>${w}</b> ${g}</span>`}).join('')}</div></div>`).join('')}</div>
+<div><h3>Tenses &amp; habits</h3><div class="tbl-wrap" style="margin-top:10px"><table><tr><th>Tense</th><th>Form</th><th>Example</th></tr>${TEN.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</table></div></div>
+<div><h3>Word order</h3><div class="tbl-wrap" style="margin-top:10px"><table><tr><th>Type</th><th>Order</th><th>Example</th></tr><tr><td>Affirmative</td><td>S + V + object + place + time</td><td>I bought a jacket in Madrid last week.</td></tr><tr><td>Negative</td><td>S + auxiliary + not + base verb</td><td>I didn't buy a jacket in Madrid.</td></tr><tr><td>Question</td><td>(Wh-) + auxiliary + S + base verb</td><td>Where did you buy it?</td></tr><tr><td>Never split</td><td>verb + object stay together</td><td>I like music very much. ✗ I like very much music.</td></tr></table></div></div>
+<div><h3>Irregular verbs</h3><div class="tbl-wrap" style="margin-top:10px"><table><tr><th>Base</th><th>Past simple</th><th>Participle</th></tr>${IRR.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</table></div></div>`}
+/* ERROR CORRECTION */
+let ER={mode:'fix',cat:'all',run:null,pi:0};
+const shuf=a=>a.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+function renderErrors(){$('#errors').innerHTML=`<div class="sec-head"><h2>Error correction</h2><p>Practica los errores más típicos del B1. Corrige frases sueltas o caza los errores de un texto completo.</p></div>
+<div class="card" style="display:grid;gap:14px"><div class="seg-ctl">${[['fix','Corrige la frase'],['hunt','Caza errores en un texto']].map(([k,l])=>`<button data-m="${k}" aria-pressed="${ER.mode==k}">${l}</button>`).join('')}</div>
+${ER.mode=='fix'?`<div class="pill-ctl">${[['all','Todos'],...Object.entries(CAT)].map(([k,l])=>`<button data-c="${k}" aria-pressed="${ER.cat==k}">${l}</button>`).join('')}</div>`:''}
+<div><button class="btn" data-act="go">${ER.mode=='fix'?'Empezar 10 frases':'Siguiente texto'}</button></div></div><div id="run">${runHTML()}</div>
+<div class="card"><h3>Tus aciertos por categoría</h3>${Object.entries(CAT).map(([k,l])=>{const o=DB.st[k]||{ok:0,n:0},p=o.n?Math.round(100*o.ok/o.n):0;return`<div class="crit-row"><span>${l}</span><span class="muted small">${o.ok}/${o.n}</span><div class="bar ${o.n?p>=75?'ok':p>=50?'warn':'bad':''}"><i style="width:${p}%"></i></div></div>`}).join('')}<button class="btn sec sm" data-act="reset" style="margin-top:8px">Borrar progreso</button></div>`;
+const a=$('#ans');if(a)a.focus()}
+function runHTML(){const R=ER.run;if(!R)return'';if(R.hunt)return huntHTML(R);
+if(R.i>=R.items.length)return`<div class="card"><div class="summary-big">${R.ok}/${R.items.length}</div><p>${R.ok>=8?'Excellent!':'Repasa las reglas y prueba otra tanda.'}</p></div>`;
+const it=R.items[R.i];return`<div class="card q-wrap"><div class="run-top"><span class="chip">${R.i+1} / ${R.items.length}</span><span class="chip ok">✓ ${R.ok}</span></div><p class="muted small">Hay un error en esta frase. Escríbela bien:</p><p class="q-text">${esc(it.wrong)}</p>
+${R.done?`<div class="feedback ${R.last?'ok':'bad'}"><b>${R.last?'Correct!':'Not quite.'}</b>Tu respuesta: ${esc(R.val)}<br>Correcto: <b>${esc(it.right)}</b>${it.errs.map(e=>`<br><span class="chip acc">${CAT[e.c]}</span> <span class="small">${RULE[e.c]}</span>`).join('')}</div><p><button class="btn" data-act="nxt">Siguiente</button></p>`:`<div class="typed"><input type="text" id="ans" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(it.wrong)}"><button class="btn" data-act="chk">Comprobar</button></div><div class="row" style="margin-top:10px"><button class="btn sec sm" data-act="hint">Pista</button>${R.hint?`<span class="chip warn">${it.errs.map(e=>CAT[e.c]).join(' + ')}</span>`:''}</div>`}</div>`}
+function huntHTML(R){const P=R.p,hit=i=>P.toks.some(t=>t.e===i&&R.sel.has(P.toks.indexOf(t)));
+return`<div class="card"><span class="chip acc">${P.n}</span><p class="muted small" style="margin-top:8px">Haz clic en las palabras incorrectas. Hay <b>${P.errs.length}</b> errores.</p><div class="proof">${P.toks.map((k,i)=>{if(!k.w)return esc(k.t);const s=R.sel.has(i);const c=R.done?(k.e!=null?(hit(k.e)?'found':'missed'):s?'fp':''):s?'sel':'';return`<button class="tok ${c}" data-act="tk" data-i="${i}">${esc(k.t)}</button>`}).join('')}</div>
+${R.done?`<div class="feedback ${R.found==P.errs.length&&!R.fp?'ok':'bad'}"><b>${R.found}/${P.errs.length} errores encontrados${R.fp?` · ${R.fp} falsas alarmas`:''}</b><ul class="tight">${P.errs.map(e=>`<li><s>${esc(e.w)}</s> → <b>${esc(e.r)||'(quitar)'}</b> <span class="chip acc">${CAT[e.c]}</span></li>`).join('')}</ul></div>`:`<p style="margin-top:12px"><button class="btn" data-act="hchk">Comprobar</button></p>`}</div>`}
+/* LAB */
+let LAB={g:'blog',t:'travel',txt:'',errs:[]};
+function renderLab(){const G=GEN[LAB.g];$('#lab').innerHTML=`<div class="sec-head"><h2>Taller de escritura</h2><p>Escribe, pulsa Analizar y corrige. La revisión es automática y orientativa: tu profe tiene la última palabra.</p></div>
+<div class="lab"><div class="lab-col"><div class="row"><div class="seg-ctl">${Object.entries(GEN).map(([k,g])=>`<button data-g="${k}" aria-pressed="${LAB.g==k}">${g.name}</button>`).join('')}</div><div class="pill-ctl">${Object.entries(TOP).map(([k,n])=>`<button data-t="${k}" aria-pressed="${LAB.t==k}">${n}</button>`).join('')}</div></div>
+<div class="card task"><span class="up">Tarea · ${G.min}–${G.max} palabras</span><p class="en">${G.tasks[LAB.t]}</p></div>
+<textarea class="ed" id="ed" placeholder="Write here…">${esc(LAB.txt)}</textarea><div class="counters" id="cnt"></div>
+<div class="row"><button class="btn" data-act="an">Analizar</button><button class="btn sec" data-act="fixall">Aplicar correcciones automáticas</button><button class="btn sec" data-act="clr">Borrar</button></div></div>
+<div class="lab-col"><div id="rep" class="card report"><p class="muted">Tu informe aparecerá aquí.</p></div></div></div>`;cnt()}
+const wc=t=>(t.match(/[A-Za-z’']+/g)||[]).length;
+function cnt(){const G=GEN[LAB.g],n=wc(LAB.txt);$('#cnt').innerHTML=`<span><b>${n}</b> palabras</span><span class="chip ${n>=G.min&&n<=G.max+20?'ok':'warn'}">objetivo ${G.min}–${G.max}</span>`}
+function analyze(){const tx=LAB.txt,G=GEN[LAB.g],n=wc(tx);let errs=[];
+for(const[re,c,f,q]of RULES){re.lastIndex=0;let m;while((m=re.exec(tx))){if(m[0]==='')re.lastIndex++;if(q){const e=tx.slice(m.index).search(/[.!?]/);if(e<0||tx[m.index+e]!='?')continue}let rep=null;if(f){rep=f(...m);if(rep===m[0])continue}errs.push({i:m.index,l:m[0].length,c,rep})}}
+errs.sort((a,b)=>a.i-b.i);let end=-1;errs=errs.filter(e=>e.i>=end&&(end=e.i+e.l,true));LAB.errs=errs;
+const cn=CN.filter(c=>new RegExp('\\b'+c+'\\b','i').test(tx)),tw=VOC[LAB.t].filter(v=>new RegExp('\\b'+v.split('=')[0]+'(s|es)?\\b','i').test(tx)).length;
+const cont=/\b\w+n['’]t\b|\b(i|you|we|they|it|he|she|that|there)['’](m|re|ve|ll|d|s)\b/i.test(tx);
+const ck=[[`${G.min}–${G.max} palabras`,n>=G.min&&n<=G.max+20,`Llevas ${n}.`],['4 conectores distintos',cn.length>=4,`Has usado ${cn.length}.`],['5 palabras del tema',tw>=5,`Has usado ${tw}.`],['Past simple',/\b(was|were|went|took|bought|saw|had|did|made|got|\w+ed)\b/i.test(tx),'Cuenta algo que pasó.'],['Present perfect',/\b(have|has|haven't|hasn't|['’]ve)\s+(never |just |already |ever |not )?(been|gone|seen|eaten|taken|done|written|worn|bought|made|had|won|lost|read|met|\w+ed)\b/i.test(tx),'have / has + participle.'],['Habits: usually / used to',/\b(usually|used to)\b/i.test(tx),'Escribe un hábito.'],['Future: will / going to',/\b(will|going to)\b/i.test(tx),'Un plan o una predicción.']];
+if(LAB.g=='blog')ck.push(['Pregunta a los lectores',/\?/.test(tx)&&/\byou\b/i.test(tx),'Termina con una pregunta.'],['Tono informal (contracciones)',cont,`I'm, didn't, it's…`]);
+else ck.push(['Sin contracciones',n>0&&!cont,'Escribe I am, did not…'],['Contraste',/\bhowever\b|on the other hand/i.test(tx),'however / on the other hand.'],['Conclusión',/in conclusion|to sum up/i.test(tx),'in conclusion / to sum up.']);
+const ok=ck.filter(x=>x[1]).length,sc=n?Math.max(0,Math.round(10*(10*ok/ck.length-errs.length*.5))/10):0,cats=[...new Set(errs.map(e=>e.c))];
+$('#rep').innerHTML=`<div class="rpt-score"><div class="summary-big">${Math.min(10,sc)}</div><div><b>Nota orientativa /10</b><div class="honest">Requisitos ${ok}/${ck.length} · ${errs.length} posibles errores</div></div></div>
+<div class="row" style="margin:10px 0">${cn.map(c=>`<span class="chip acc">${c}</span>`).join('')||'<span class="muted small">Sin conectores todavía</span>'}</div>
+${ck.map(x=>`<div class="chk ${x[1]?'ok':'warn'}"><span class="ic">${x[1]?'✓':'!'}</span><div>${x[0]}<div class="tip">${x[2]}</div></div></div>`).join('')}
+<h4 style="margin-top:14px">Errores detectados</h4>${errs.length?errs.slice(0,20).map(e=>`<div class="ecard"><div class="ctx">${esc(tx.slice(Math.max(0,e.i-30),e.i))}<mark>${esc(tx.substr(e.i,e.l))}</mark>${esc(tx.slice(e.i+e.l,e.i+e.l+30))}</div><div><span class="chip acc">${CAT[e.c]}</span> ${e.rep?`→ <b>${esc(e.rep)}</b>`:'<span class="small muted">Revisa la regla.</span>'}</div></div>`).join(''):'<p class="muted small">No se han detectado errores típicos. ¡Revisa también a mano!</p>'}
+${cats.length?`<details style="margin-top:12px"><summary>Reglas para repasar</summary><div class="inner">${cats.map(c=>`<p><b>${CAT[c]}</b><br><span class="small">${RULE[c]}</span></p>`).join('')}</div></details>`:''}`}
+/* EVENTS */
+document.addEventListener('click',e=>{const b=e.target.closest('[data-act],[data-g],[data-t],[data-m],[data-c]');if(!b)return;const d=b.dataset,R=ER.run;
+if(d.act=='go'){if(ER.mode=='fix')ER.run={items:shuf(ITEMS.filter(x=>ER.cat=='all'||x.errs.some(y=>y.c==ER.cat))).slice(0,10),i:0,ok:0};else{const p=PARAS[ER.pi++%PARAS.length];ER.run={hunt:1,p,sel:new Set()}}renderErrors()}
+else if(d.m){ER.mode=d.m;ER.run=null;renderErrors()}else if(d.c){ER.cat=d.c;renderErrors()}
+else if(d.act=='hint'){R.hint=1;renderErrors()}
+else if(d.act=='chk'){const it=R.items[R.i];R.val=$('#ans').value;R.last=norm(R.val)==norm(it.right)||(it.alts||[]).some(a=>norm(a)==norm(R.val));if(R.last)R.ok++;it.errs.forEach(x=>rec(x.c,R.last));R.done=1;renderErrors()}
+else if(d.act=='nxt'){R.i++;R.done=0;R.hint=0;renderErrors()}
+else if(d.act=='tk'&&!R.done){const i=+d.i;R.sel.has(i)?R.sel.delete(i):R.sel.add(i);renderErrors()}
+else if(d.act=='hchk'){R.done=1;R.found=0;R.p.errs.forEach((x,i)=>{const h=R.p.toks.some((t,k)=>t.e===i&&R.sel.has(k));rec(x.c,h);if(h)R.found++});R.fp=[...R.sel].filter(k=>R.p.toks[k].e==null).length;renderErrors()}
+else if(d.act=='reset'){DB.st={};save();meter();renderErrors()}
+else if(d.g&&$('#lab').classList.contains('on')){LAB.g=d.g;renderLab()}else if(d.g)LAB.g=d.g;
+else if(d.t){LAB.t=d.t;renderLab()}
+else if(d.act=='an')analyze();
+else if(d.act=='clr'){LAB.txt='';renderLab()}
+else if(d.act=='fixall'){let t=LAB.txt;[...LAB.errs].reverse().forEach(x=>{if(x.rep!=null)t=t.slice(0,x.i)+x.rep+t.slice(x.i+x.l)});LAB.txt=t;renderLab();analyze()}});
+document.addEventListener('input',e=>{if(e.target.id=='ed'){LAB.txt=e.target.value;cnt()}});
+document.addEventListener('keydown',e=>{if(e.key!='Enter'||e.repeat)return;if(e.target.id=='ans'){e.preventDefault();$('[data-act=chk]').click()}else if(e.target==document.body){const n=$('[data-act=nxt]');if(n){e.preventDefault();n.click()}}});
+/* ROUTER */
+const VIEWS=['blog','article','vocab','errors','lab'],RN={blog:()=>renderGenre('blog'),article:()=>renderGenre('article'),vocab:renderVocab,errors:renderErrors,lab:renderLab};
+function route(){const v=VIEWS.includes(location.hash.slice(1))?location.hash.slice(1):'blog';VIEWS.forEach(x=>$('#'+x).classList.toggle('on',x==v));document.querySelectorAll('#tabs a').forEach(a=>a.toggleAttribute('aria-current',a.dataset.v==v)||a.removeAttribute('aria-current'));document.querySelectorAll('#tabs a').forEach(a=>{if(a.dataset.v==v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});RN[v]();window.scrollTo(0,0)}
+addEventListener('hashchange',route);
+let TH=0;$('#themeBtn').onclick=()=>{TH=(TH+1)%3;const v=['auto','light','dark'][TH];v=='auto'?document.documentElement.removeAttribute('data-theme'):document.documentElement.setAttribute('data-theme',v);$('#themeBtn').textContent='Tema: '+v};
+meter();route();
+</script>
+</body></html>
