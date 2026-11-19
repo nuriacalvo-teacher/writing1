@@ -1,11 +1,13 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Blog &amp; Article Lab B1</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;600&display=swap">
 <style>
-/* Layout: cabecera fina + pestañas fijas; contenido a la izquierda (columna de lectura + panel lateral en escritorio). */
 :root {
   --bg: #F4F5FA; --card: #FFFFFF; --ink: #101828; --muted: #536079; --line: #DDE1EC; --soft: #EDEFF8;
   --accent: #4338CA; --accent-ink: #FFFFFF; --accent-soft: #E8E7FB;
@@ -33,8 +35,8 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; margin: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: env(safe-area-inset-top, 0px); }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 16px; line-height: 1.6; margin: 0; padding-bottom: env(safe-area-inset-bottom, 0px); }
 h1, h2, h3, h4 { font-family: var(--f-display); line-height: 1.15; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
 h1 { font-size: clamp(1.9rem, 4.6vw, 3rem); font-weight: 800; }
 h2 { font-size: clamp(1.4rem, 3vw, 1.8rem); font-weight: 700; }
@@ -50,8 +52,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .xs { font-size: .78rem; }
 .up { text-transform: uppercase; letter-spacing: .08em; font-size: .72rem; font-weight: 700; color: var(--muted); }
 
-/* cabecera y pestañas */
-.top { background: var(--card); border-bottom: 1px solid var(--line); }
+.top { background: var(--card); border-bottom: 1px solid var(--line); padding-top: env(safe-area-inset-top, 0px); }
 .top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding-block: 12px; }
 .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
 .mark { width: 40px; height: 40px; border-radius: 10px; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; font-family: var(--f-display); font-weight: 800; font-size: 1.05rem; flex: none; }
@@ -60,8 +61,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .top-right { display: flex; align-items: center; gap: 10px; }
 .meter { font-size: .8rem; color: var(--muted); text-align: right; line-height: 1.25; }
 .meter b { color: var(--ink); font-variant-numeric: tabular-nums; }
-.tabsbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--card); border-bottom: 1px solid var(--line); }
-body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--card); z-index: 30; }
+.tabsbar { position: sticky; top: 0; z-index: 20; background: var(--card); border-bottom: 1px solid var(--line); }
 .tabs { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
 .tabs::-webkit-scrollbar { display: none; }
 .tabs a { flex: none; padding: 12px 14px; text-decoration: none; color: var(--muted); font-weight: 600; font-size: .92rem; border-bottom: 3px solid transparent; white-space: nowrap; }
@@ -74,9 +74,8 @@ main { padding-block: 28px 80px; }
 .view > * + * { margin-top: 28px; }
 .sec-head { display: grid; gap: 6px; margin-bottom: 14px; }
 .sec-head p { color: var(--muted); margin: 0; max-width: 70ch; }
-
 @media (max-width: 600px) { .meter { display: none; } .brand-sub { font-size: .72rem; } }
-/* componentes */
+
 .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; }
 .card.flat { background: var(--soft); border-color: transparent; }
 .grid { display: grid; gap: 14px; }
@@ -102,9 +101,6 @@ main { padding-block: 28px 80px; }
 .pill-ctl { display: flex; gap: 6px; flex-wrap: wrap; }
 .pill-ctl button { border: 1px solid var(--line); background: var(--card); padding: 5px 12px; border-radius: 999px; font-size: .84rem; cursor: pointer; font-weight: 600; color: var(--muted); }
 .pill-ctl button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
-.field { display: grid; gap: 4px; }
-.field label { font-size: .78rem; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
-select, input[type="text"], input[type="search"] { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; min-width: 0; max-width: 100%; }
 .bar { height: 8px; border-radius: 99px; background: var(--soft); overflow: hidden; }
 .bar > i { display: block; height: 100%; background: var(--accent); border-radius: 99px; }
 .bar.ok > i { background: var(--ok); } .bar.warn > i { background: var(--warn); } .bar.bad > i { background: var(--bad); }
@@ -113,7 +109,7 @@ table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: .92
 th, td { text-align: left; padding: 10px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
 th { font-size: .74rem; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); background: var(--soft); }
 tr:last-child td { border-bottom: 0; }
-td:first-child { font-weight: 700; white-space: nowrap; }
+td:first-child { font-weight: 700; }
 details { border: 1px solid var(--line); border-radius: var(--r); background: var(--card); }
 details > summary { cursor: pointer; padding: 12px 16px; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
 details > summary::-webkit-details-marker { display: none; }
@@ -121,99 +117,37 @@ details > summary::after { content: "+"; font-size: 1.2rem; color: var(--muted);
 details[open] > summary::after { content: "−"; }
 details > .inner { padding: 0 16px 16px; }
 ul.tight { margin: 0; padding-left: 1.15em; } ul.tight li { margin: 2px 0; }
-.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-svg.ic { width: 1em; height: 1em; vertical-align: -.125em; flex: none; }
 
-/* PLAN */
-.hero { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 32px; align-items: center; padding-block: 6px 8px; }
-@media (max-width: 880px) { .hero { grid-template-columns: minmax(0, 1fr); } }
-.hero p.lead { font-size: 1.12rem; color: var(--muted); max-width: 56ch; margin-block: 14px 20px; }
-.score-card .line { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; margin-block: 10px; align-items: end; }
-.score-card .line .bar { grid-column: 1 / -1; }
-.score-big { font-family: var(--f-display); font-weight: 800; font-size: 3rem; line-height: 1; font-variant-numeric: tabular-nums; }
-.step { display: grid; grid-template-columns: 32px minmax(0, 1fr) auto; gap: 14px; align-items: start; padding: 14px 16px; }
-.step .n { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); font-weight: 800; font-size: .9rem; }
-.step.done .n { background: var(--ok-soft); color: var(--ok); }
-.time-line { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0; border: 1px solid var(--line); border-radius: var(--r); background: var(--card); overflow: hidden; }
-.time-line > div { padding: 14px 16px; border-right: 1px solid var(--line); }
-.time-line > div:last-child { border-right: 0; }
-.time-line b.min { font-family: var(--f-display); font-size: 1.4rem; color: var(--accent); display: block; }
-
-/* GÉNEROS / ESTRUCTURA */
-.pair { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line); border-radius: var(--r); background: var(--card); overflow: hidden; }
-.pair > div { padding: 14px 16px; }
-.pair > div:first-child { border-right: 1px solid var(--line); font-family: var(--f-body); }
-.pair > div:last-child { font-family: var(--f-serif); font-size: 1.06rem; }
-.pair + .pair { margin-top: 10px; }
-@media (max-width: 640px) { .pair { grid-template-columns: 1fr; } .pair > div:first-child { border-right: 0; border-bottom: 1px solid var(--line); } }
-.tag-b, .tag-a { display: block; font-family: var(--f-body); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 700; margin-bottom: 4px; }
-.tag-b { color: var(--c-body); } .tag-a { color: var(--c-concl); }
+.note-list { display: grid; gap: 8px; }
+.note { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; padding: 10px 12px; border-left: 4px solid var(--pc); background: var(--card); border-radius: 0 10px 10px 0; border-top: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: .92rem; }
 .p-title { --pc: var(--c-title); } .p-hook { --pc: var(--c-hook); } .p-body { --pc: var(--c-body); }
 .p-tips { --pc: var(--c-tips); } .p-concl { --pc: var(--c-concl); } .p-cta { --pc: var(--c-cta); }
 .dot { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--pc); margin-right: 6px; }
-.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: .82rem; color: var(--muted); }
 .model { background: var(--card); border: 1px solid var(--line); border-radius: var(--r); padding: 22px clamp(16px, 3vw, 30px); }
 .model.is-article { font-family: var(--f-serif); font-size: 1.14rem; line-height: 1.7; }
 .model.is-blog { font-size: 1.04rem; }
 .model h3.mtitle { font-size: clamp(1.4rem, 3vw, 1.9rem); margin-bottom: 14px; }
 .model.is-article h3.mtitle { font-family: var(--f-serif); font-weight: 600; }
 .model p { margin: 0 0 1em; }
-.seg { background: color-mix(in srgb, var(--pc) 15%, var(--card)); border-bottom: 2px solid var(--pc); padding: 1px 2px; cursor: pointer; border-radius: 3px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
-.seg:hover, .seg.sel { background: color-mix(in srgb, var(--pc) 32%, var(--card)); }
-.note-list { display: grid; gap: 8px; }
-.note { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 10px; padding: 10px 12px; border-left: 4px solid var(--pc); background: var(--card); border-radius: 0 10px 10px 0; border-top: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: .92rem; }
-.note.sel { background: color-mix(in srgb, var(--pc) 10%, var(--card)); }
-.part { border-left: 4px solid var(--pc); }
-.part summary b { font-family: var(--f-display); }
-.budget { display: flex; height: 30px; border-radius: 8px; overflow: hidden; border: 1px solid var(--line); font-size: .72rem; font-weight: 700; }
-.budget span { display: grid; place-items: center; background: color-mix(in srgb, var(--pc) 24%, var(--card)); color: var(--ink); white-space: nowrap; overflow: hidden; }
-.teel { display: grid; gap: 8px; }
-.teel > div { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 12px; align-items: start; }
-.teel .r { font-family: var(--f-display); font-weight: 800; font-size: 1.8rem; line-height: 1; color: var(--accent); }
-.good { color: var(--ok); } .badc { color: var(--bad); }
-.cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-@media (max-width: 640px) { .cols2 { grid-template-columns: 1fr; } }
-.li-ok li::marker { color: var(--ok); } .li-bad li::marker { color: var(--bad); }
+.seg { background: color-mix(in srgb, var(--pc) 15%, var(--card)); border-bottom: 2px solid var(--pc); padding: 1px 2px; border-radius: 3px; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 
-/* CONECTORES */
 .conn-card h3 { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; font-size: 1.02rem; margin-bottom: 8px; }
 .conn { padding: 9px 0; border-top: 1px solid var(--line); }
 .conn:first-of-type { border-top: 0; }
 .conn .w { font-weight: 700; }
-.reg { font-size: .66rem; font-weight: 800; letter-spacing: .06em; padding: 1px 6px; border-radius: 5px; margin-left: 6px; vertical-align: 2px; }
-.reg.b { background: color-mix(in srgb, var(--c-body) 18%, var(--card)); color: var(--c-body); }
-.reg.a { background: color-mix(in srgb, var(--c-concl) 18%, var(--card)); color: var(--c-concl); }
-.reg.x { background: var(--soft); color: var(--muted); }
 .conn .ex { font-style: italic; color: var(--ink); }
-.trap { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid var(--line); border-radius: var(--r); background: var(--card); overflow: hidden; }
-.trap > div { padding: 10px 14px; }
-.trap .x { background: var(--bad-soft); } .trap .v { background: var(--ok-soft); }
-.trap .why { grid-column: 1 / -1; font-size: .86rem; color: var(--muted); border-top: 1px solid var(--line); }
-@media (max-width: 640px) { .trap { grid-template-columns: 1fr; } }
 
-/* PRÁCTICA */
-.setcard { display: grid; gap: 8px; align-content: space-between; }
-.setcard .meta { display: flex; justify-content: space-between; gap: 8px; align-items: center; }
 .q-wrap { max-width: 780px; }
 .q-text { font-size: 1.2rem; font-weight: 600; margin-block: 8px 16px; font-family: var(--f-display); }
-.opts { display: grid; gap: 8px; }
-.opt { text-align: left; border: 1.5px solid var(--line); background: var(--card); border-radius: 10px; padding: 11px 14px; cursor: pointer; font-size: 1rem; display: flex; justify-content: space-between; gap: 10px; align-items: center; }
-.opt:hover:not([disabled]) { border-color: var(--accent); background: var(--accent-soft); }
-.opt.right { border-color: var(--ok); background: var(--ok-soft); }
-.opt.wrong { border-color: var(--bad); background: var(--bad-soft); }
 .feedback { margin-top: 14px; padding: 12px 14px; border-radius: 10px; font-size: .95rem; }
 .feedback.ok { background: var(--ok-soft); } .feedback.bad { background: var(--bad-soft); }
 .feedback b { display: block; margin-bottom: 2px; }
+.feedback .why { display: block; margin-top: 8px; padding-top: 8px; border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); }
+.feedback .why b { display: inline; }
+.feedback .rl { display: block; color: var(--muted); font-size: .84rem; margin-top: 2px; }
 .typed { display: flex; gap: 8px; flex-wrap: wrap; }
 .typed input { flex: 1 1 220px; font-size: 1.05rem; }
-.ord { display: grid; gap: 8px; }
-.ord-item { display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 8px 10px; border: 1.5px solid var(--line); border-radius: 10px; background: var(--card); }
-.ord-item.right { border-color: var(--ok); background: var(--ok-soft); }
-.ord-item.wrong { border-color: var(--bad); background: var(--bad-soft); }
-.ord-item .no { font-weight: 800; color: var(--muted); text-align: center; }
-.ord-item .mv { display: flex; gap: 4px; }
-.mv button { border: 1px solid var(--line); background: var(--card); border-radius: 7px; width: 32px; height: 32px; cursor: pointer; }
-.mv button:hover:not([disabled]) { border-color: var(--accent); }
+select, input[type="text"], input[type="search"] { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; min-width: 0; max-width: 100%; }
 .proof { font-family: var(--f-serif); font-size: 1.15rem; line-height: 2.1; padding: 16px 18px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); }
 .tok { cursor: pointer; border-radius: 5px; padding: 1px 2px; border: 0; background: transparent; font: inherit; color: inherit; }
 .tok:hover { background: var(--accent-soft); }
@@ -223,53 +157,41 @@ svg.ic { width: 1em; height: 1em; vertical-align: -.125em; flex: none; }
 .tok.fp { background: var(--bad-soft); box-shadow: inset 0 -2px 0 var(--bad); text-decoration: line-through; }
 .run-top { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 10px; flex-wrap: wrap; }
 .summary-big { font-family: var(--f-display); font-size: 3.4rem; font-weight: 800; line-height: 1; }
-.rev { padding: 12px 14px; border-left: 4px solid var(--bad); background: var(--card); border-radius: 0 10px 10px 0; border: 1px solid var(--line); border-left-width: 4px; border-left-color: var(--bad); }
+.hunt-why { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+.hunt-why li { padding-top: 8px; border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent); }
+.bad-t { color: var(--bad); } .good-t { color: var(--ok); }
+.rb h4 { margin: 18px 0 6px; }
+.rb h4:first-child { margin-top: 4px; }
+.rb td:first-child { white-space: normal; }
+.rb .x { color: var(--bad); } .rb .v { color: var(--ok); }
+.rb p.lead { color: var(--muted); font-size: .92rem; }
 
-/* TALLER */
 .lab { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: 22px; align-items: start; }
 @media (max-width: 980px) { .lab { grid-template-columns: minmax(0, 1fr); } }
 .lab-col { display: grid; gap: 16px; min-width: 0; }
 .task { border-left: 4px solid var(--accent); }
 .task .en { font-family: var(--f-serif); font-size: 1.05rem; line-height: 1.6; }
-.pt { display: flex; gap: 8px; align-items: flex-start; padding: 6px 0; font-size: .9rem; }
-.pt label { display: flex; gap: 8px; align-items: flex-start; cursor: pointer; }
 textarea.ed { width: 100%; min-height: 380px; resize: vertical; background: var(--card); border: 1.5px solid var(--line); border-radius: var(--r); padding: 16px 18px; line-height: 1.7; font-size: 1.05rem; }
 textarea.ed:focus { border-color: var(--accent); outline: none; box-shadow: 0 0 0 3px var(--accent-soft); }
 .counters { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; font-size: .86rem; color: var(--muted); font-variant-numeric: tabular-nums; }
 .counters b { color: var(--ink); }
-.banner { padding: 10px 14px; border-radius: 10px; background: var(--warn-soft); color: var(--warn); font-size: .9rem; display: flex; justify-content: space-between; gap: 10px; align-items: center; flex-wrap: wrap; }
-.pgroup { margin-block: 8px; }
-.pgroup .up { margin-bottom: 4px; display: block; }
-.phr { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 3px 9px; font-size: .84rem; cursor: pointer; margin: 0 4px 4px 0; }
-.phr:hover { border-color: var(--accent); background: var(--accent-soft); }
 .report { position: sticky; top: 64px; }
 @media (max-width: 980px) { .report { position: static; } }
 .crit-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3px 10px; margin-block: 8px; }
 .crit-row .bar { grid-column: 1 / -1; }
 .chk { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 8px; padding: 9px 0; border-top: 1px solid var(--line); font-size: .9rem; }
 .chk .ic { margin-top: 3px; font-size: 1.1rem; }
-.chk.ok .ic { color: var(--ok); } .chk.warn .ic { color: var(--warn); } .chk.bad .ic { color: var(--bad); }
+.chk.ok .ic { color: var(--ok); } .chk.warn .ic { color: var(--warn); }
 .chk .tip { color: var(--muted); font-size: .84rem; margin-top: 2px; }
-.chk .pts { font-variant-numeric: tabular-nums; font-weight: 700; font-size: .82rem; color: var(--muted); }
 .ecard { display: grid; gap: 4px; padding: 10px 0; border-top: 1px solid var(--line); font-size: .9rem; }
 .ecard .ctx { font-family: var(--f-serif); background: var(--soft); padding: 6px 10px; border-radius: 8px; overflow-wrap: anywhere; }
-.ecard mark, .marked mark.e { background: color-mix(in srgb, var(--bad) 22%, var(--card)); color: inherit; border-bottom: 2px solid var(--bad); border-radius: 3px; padding: 0 1px; }
-.marked { font-family: var(--f-serif); font-size: 1.05rem; line-height: 1.75; white-space: pre-wrap; overflow-wrap: anywhere; padding: 14px 16px; background: var(--card); border: 1px solid var(--line); border-radius: var(--r); }
-.marked mark.c { background: transparent; color: inherit; border-bottom: 2px solid var(--accent); }
-.marked mark.t { background: color-mix(in srgb, var(--warn) 18%, var(--card)); color: inherit; border-bottom: 2px dotted var(--warn); }
+.ecard mark { background: color-mix(in srgb, var(--bad) 22%, var(--card)); color: inherit; border-bottom: 2px solid var(--bad); border-radius: 3px; padding: 0 1px; }
 .rpt-score { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
 .honest { font-size: .82rem; color: var(--muted); }
-.cl { display: grid; gap: 6px; }
-.cl label { display: flex; gap: 10px; align-items: flex-start; cursor: pointer; font-size: .92rem; }
-.timer { font-variant-numeric: tabular-nums; font-weight: 700; }
-
-/* PROGRESO */
-.hist { display: grid; grid-template-columns: 110px minmax(0, 1fr) 44px; gap: 10px; align-items: center; font-size: .88rem; padding: 6px 0; }
-.empty { text-align: left; padding: 22px; border: 1.5px dashed var(--line); border-radius: var(--r); color: var(--muted); }
-.toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--bg); padding: 9px 16px; border-radius: 10px; font-size: .9rem; z-index: 50; max-width: calc(100% - 32px); }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
-
 </style>
+</head>
+<body>
 <header class="top"><div class="wrap"><div class="brand"><div class="mark" aria-hidden="true">B1</div><div><div class="brand-name">Blog &amp; Article Lab · B1</div><div class="brand-sub">Writing · 3º–4º ESO · travel, fashion y board games</div></div></div><div class="top-right"><div class="meter" id="meter"></div><button class="btn sec sm" id="themeBtn" type="button">Tema: auto</button></div></div></header>
 <div class="tabsbar"><div class="wrap"><nav class="tabs" id="tabs" aria-label="Secciones"><a href="#blog" data-v="blog">Blog post</a><a href="#article" data-v="article">Article</a><a href="#vocab" data-v="vocab">Vocab &amp; grammar</a><a href="#errors" data-v="errors">Error correction</a><a href="#lab" data-v="lab">Taller</a></nav></div></div>
 <main class="wrap" id="main"><section id="blog" class="view"></section><section id="article" class="view"></section><section id="vocab" class="view"></section><section id="errors" class="view"></section><section id="lab" class="view"></section></main>
@@ -278,21 +200,150 @@ const $=(s,r=document)=>r.querySelector(s),esc=s=>String(s).replace(/[&<>]/g,c=>
 let DB={st:{}};try{DB=JSON.parse(localStorage.getItem('lab-b1')||'null')||DB}catch(e){}
 const save=()=>{try{localStorage.setItem('lab-b1',JSON.stringify(DB))}catch(e){}};
 const TOP={travel:'Travel',fashion:'Fashion',games:'Board games'};
-const CAT={wo:'Word order',sv:'Subject-verb agreement',s3:'-s 3rd person',vd:'Verb + direct object',tn:'Tenses',ir:'Irregular pasts',pp:'Participles',hb:'Habits',cn:'Connectors',vc:'Vocabulary'};
-const RULE={wo:'Afirmativa: S + V + O (+ lugar + tiempo). Negativa: S + auxiliar + not + verbo base. Pregunta: (Wh-) + auxiliar + S + verbo base. Adverbios de frecuencia: antes del verbo, después de be.',
-sv:'El verbo concuerda con el sujeto: I am, he/she/it is, we/they are; there is + singular, there are + plural; people, clothes y parents son plurales.',
-s3:'Present simple: he/she/it + verbo con -s/-es (has, goes). Con does/doesn\'t, did/didn\'t el verbo va en base, sin -s.',
+const CAT={wo:'Word order',wa:'Word order: adverbios de frecuencia',we:'Word order: adverbios al final',wj:'Word order: adjetivos',hd:'Have / do: principal o auxiliar',sv:'Subject-verb agreement',s3:'-s 3rd person',vd:'Verb + direct object',tn:'Tenses',ir:'Irregular pasts',pp:'Participles',hb:'Habits',cn:'Connectors',vc:'Vocabulary'};
+const RULE={wo:'Afirmativa: S + V + O (+ lugar + tiempo). Negativa: S + auxiliar + not + verbo base. Pregunta: (Wh-) + auxiliar + SUJETO + verbo base (Where are you going? What do you want?). Si el pronombre interrogativo (who, what) es el sujeto, NO hay auxiliar ni inversión: Who broke the window? What makes you happy? Pregunta indirecta: orden de afirmación y sin do (She asked me where I had bought it).',
+wa:'Adverbios de frecuencia (always, usually, often, sometimes, never, ever…): 1) DETRÁS de be (She is always late). 2) DELANTE del verbo principal si el tiempo es simple (I usually have breakfast). 3) DETRÁS del primer auxiliar o modal (I have never been; she can usually win; I don\'t usually eat). Never ya es negativo: no se dice don\'t never.',
+we:'Al final de la frase: cómo (manner) → dónde (place) → cuándo (time): He drove carefully to the airport yesterday. No metas el adverbio entre el verbo y su objeto. Well, hard, fast y very much se quedan al final; good es adjetivo, el adverbio es well.',
+wj:'El adjetivo va ANTES del sustantivo, no cambia nunca (a red jacket, two red jackets) y no más de 3. Orden: opinión → tamaño → edad → forma → color → origen → material + sustantivo (a lovely small old round red Italian leather bag). Con be va detrás: the jacket is red. Edad: a ten-year-old boy (con guiones y sin -s).',
+hd:'Have y do son verbos PRINCIPALES (have breakfast, do homework) y también AUXILIARES (don\'t, does, did). Cuando son principales, la negativa y la pregunta necesitan los dos: auxiliar + verbo principal. I don\'t do my homework, What do you do?, She doesn\'t have breakfast, Did you have a good time? El error típico es escribir solo uno de los dos.',
+sv:'El verbo concuerda con el sujeto: I am, he/she/it is, we/they are; there is + singular, there are + plural; people, clothes y parents son plurales; everybody y news son singulares.',
+s3:'Present simple: he/she/it + verbo con -s/-es (has, goes, watches, studies). Con does/doesn\'t, did/didn\'t el verbo va en base, sin -s.',
 vd:'Nunca separes verbo y objeto directo: I like music very much / I like it a lot. Lugar y tiempo van después del objeto.',
-tn:'yesterday / last / ago → past simple. since / for / ever / already / yet → present perfect (o present perfect continuous si la acción sigue). now / look! → present continuous. Planes → be going to. Predicciones → will. since + momento, for + duración. had + participio = antes de otro momento del pasado; will be + -ing = estará haciendo algo; will have + participio = habrá terminado antes de un momento futuro.',
+tn:'yesterday / last / ago → past simple. since / for / ever / already / yet → present perfect (o present perfect continuous si la acción sigue). now / look! → present continuous. Verbos de estado (know, like, want) no van en continuo. Planes → be going to. Predicciones → will. since + momento, for + duración. had + participio = antes de otro momento del pasado; will be + -ing = estará haciendo algo; will have + participio = habrá terminado antes de un momento futuro.',
 ir:'Los verbos irregulares no llevan -ed: go–went, buy–bought, take–took. Tras did / didn\'t va el verbo base.',
 pp:'Present perfect = have/has + participio: seen, done, been, gone, eaten, written… Ojo: have been to = haber estado (experiencia); have gone to = haber ido (y no estar de vuelta).',
-hb:'usually + present simple. used to + base (hábito pasado). be / get used to + -ing (estar / acostumbrarse). didn\'t use to + base.',
-cn:'because = causa, so = resultado. Con although no se usa but. On the other hand, in conclusion, however…',
-vc:'Collocations: take a photo / a trip, play a board game, go shopping, beat someone. Luggage, advice e information son incontables.'};
-const SENT=["I [not like|don't like|wo] spicy food when I travel.","[Where you are|Where are you|wo] going on holiday this summer?","We [always are|are always|wo] late for the airport.","There [is|are|sv] three dice in the box.","My parents [is|are|sv] packing the suitcases now.","Her clothes [is|are|sv] always very colourful.","[Was|Were|sv] you and your friends in Paris last summer?","He [don't|doesn't|s3] like flying.","She [play|plays|s3] chess every Sunday.","Does your sister [likes|like|s3] this hat?","My brother [have|has|s3] a new backpack.","I love [a lot travelling|travelling a lot|vd].",["She bought [yesterday a dress|a dress yesterday|vd] in a small shop.","Yesterday she bought a dress in a small shop."],"He plays [very well chess|chess very well|vd].","We visited [every year Rome|Rome every year|vd].","I [live|have lived|tn] in this city for ten years.","Yesterday we [have visited|visited|tn] the castle.","Look! It [rains|is raining|tn] and we haven't got umbrellas.","Next summer I [go|am going|tn] to visit my cousins. I have already bought the tickets.","I [am waiting|have been waiting|tn] for you for an hour!","When I [walked|was walking|tn] to the station, it started to rain.","I think it [is|will be|tn] sunny tomorrow.","By the time we got to the airport, the plane [left|had left|tn].","She was sad because she [lost|had lost|tn] her passport.","This time tomorrow I [fly|will be flying|tn] to Rome.","By next June I [will finish|will have finished|tn] my exams.","Last year we [goed|went|ir] to Lisbon.","She [buyed|bought|ir] a beautiful scarf.","They [didn't went|didn't go|ir] to the party.","I [taked|took|ir] hundreds of photos.","I have [saw|seen|pp] that film twice.","She has [wrote|written|pp] a long blog post.",["Have you ever [went|been|pp] to London?","Have you ever gone to London?"],"We haven't [eat|eaten|pp] paella yet.","He has [did|done|pp] his homework.","When I was a child, I [use to|used to|hb] play Monopoly every weekend.","I [didn't used to|didn't use to|hb] like travelling by plane.","I'm not used to [wake|waking|hb] up so early.","She usually [is wearing|wears|hb] jeans to school.","It was hard, but now I'm used to [wear|wearing|hb] a uniform.","I was tired [because of|because|cn] I got up at five.","The train was late, [because|so|cn] we missed the bus.","I love fashion. [In the other hand|On the other hand|cn], I don't have much money.","First we visited the museum. [At the end|Then|cn], we had lunch.","Although it was cold, [but we|we|cn] went to the beach.","I [did|took|vc] a lot of photos in Rome.","We [made|took|vc] a trip to Prague.","Let's [do|play|vc] a board game tonight.","I need some [advices|advice|vc] about what to wear.","My [luggages are|luggage is|vc] very heavy.","He [won|beat|vc] me at chess."];
-const PARA=[["Blog · travel","Last summer I [goed|went|ir] to Edinburgh with my family. We [taked|took|ir] hundreds of photos and [visited every day a castle|visited a castle every day|vd]. My brother [don't|doesn't|s3] like walking, [because|so|cn] he was always tired. My parents [is|are|sv] used to [walk|walking|hb] a lot, but I'm not. We have [ate|eaten|pp] fish and chips three times! I [use to|used to|hb] hate fish, but now I love it."],["Article · fashion","Today, many teenagers [buys|buy|sv] second-hand clothes. There are two main reasons. Firstly, it [are|is|sv] cheaper: a good jacket [cost|costs|s3] half the price. Although some people think old clothes are dirty, [but||cn] many shops wash everything. [In the other hand|On the other hand|cn], fast fashion [have|has|sv] a big problem: it [use|uses|s3] a lot of water. Last year, a survey [has shown|showed|tn] that most young people [is|are|sv] worried about it. [At the end|In conclusion|cn], second-hand fashion is a smart choice."]];
+hb:'usually + present simple. used to + base (hábito pasado). be / get used to + -ing (estar / acostumbrarse). didn\'t use to / did you use to + base (se pierde la -d).',
+cn:'because = causa, so = resultado. Con although no se usa but. Although + sujeto + verbo; despite + sustantivo / -ing. On the other hand, in conclusion, however…',
+vc:'Collocations: take a photo / a trip, play a board game, go shopping, beat someone, make a mistake, tell a story. Luggage, advice e information son incontables.'};
+/* Sintaxis: [mal|bien|categoría|explicación]. 6 frases por módulo, un solo tipo de error en cada una. */
+const SENT=[
+/* wo · orden en preguntas, subject questions, indirectas y negativas */
+"[Where you are|Where are you|wo|En una pregunta el verbo auxiliar (o be) va ANTES del sujeto: Wh- + auxiliar + sujeto + verbo.] going on holiday?",
+"[What you want|What do you want|wo|En preguntas con Wh- el orden es Wh- + auxiliar (do) + sujeto + verbo base. No se puede quitar el auxiliar ni dejar el sujeto delante.] for your birthday?",
+"Who [did break|broke|wo|Cuando el pronombre interrogativo (who, what) es el SUJETO de la frase no se usa auxiliar ni inversión: Who broke…? Compara: Who did you see? (aquí who es objeto).] the window?",
+"What [does make|makes|wo|Aquí what es el sujeto (lo que te hace feliz), así que no lleva do/does: What makes you happy? Si what fuera objeto sí: What do you want?] you happy?",
+"She asked me where [did I buy|I had bought|wo|En una pregunta indirecta el orden es el de una afirmación (sujeto + verbo, sin auxiliar do). Además el verbo retrocede un tiempo: bought → had bought.] my T-shirt.",
+"I [not like|don't like|wo|La negación en presente simple se hace con don't / doesn't + verbo base. Not no puede ir solo delante del verbo.] spicy food when I travel.",
+/* wa */
+"We [always are|are always|wa|El adverbio de frecuencia va DETRÁS del verbo be: am / is / are + always.] late for the airport.",
+"He [travels never|never travels|wa|En presente simple el adverbio va DELANTE del verbo principal, nunca detrás.] by plane.",
+"I [never have|have never|wa|Con un auxiliar (have) el adverbio va DETRÁS del primer auxiliar: have never been.] been to London.",
+"She [usually can|can usually|wa|Con un verbo modal el adverbio va detrás del modal: can usually.] beat me at cards.",
+"They [usually don't|don't usually|wa|En negativa el adverbio va detrás del auxiliar: don't usually.] play on weekdays.",
+"I [don't never|never|wa|Never ya es negativo: no se combina con don't. Se dice I never eat (o I don't ever eat).] eat meat.",
+/* we */
+"We arrived [yesterday at the hotel|at the hotel yesterday|we|Al final de la frase el lugar va antes que el tiempo: place → time.].",
+"They played [yesterday in the park|in the park yesterday|we|Lugar (in the park) antes que tiempo (yesterday).].",
+"She did the test [yesterday well|well yesterday|we|Orden al final: modo (well) → tiempo (yesterday).].",
+"He worked [yesterday hard|hard yesterday|we|Orden al final: modo (hard) → tiempo (yesterday).].",
+"I'll see you [tomorrow at school|at school tomorrow|we|Lugar antes que tiempo: at school → tomorrow.].",
+"He plays [good|well|we|Para modificar a un verbo hace falta un adverbio (well). Good es un adjetivo: a good player.].",
+/* wj */
+"I bought a [jacket red|red jacket|wj|El adjetivo va ANTES del sustantivo, al revés que en español.].",
+"She has a [blue big|big blue|wj|Orden de los adjetivos: tamaño (big) antes que color (blue).] bag.",
+"It is a [French lovely|lovely French|wj|Orden: opinión (lovely) antes que origen (French).] city.",
+"He wore a [leather black|black leather|wj|Orden: color (black) antes que material (leather).] jacket.",
+"My trainers are [whites|white|wj|Los adjetivos en inglés no tienen plural ni género: white, aunque el sustantivo sea plural.].",
+["She bought a [beautiful long red cotton Italian|beautiful long red|wj|No se ponen más de 3 adjetivos seguidos antes del sustantivo. Quédate con los 3 más importantes y respeta el orden: opinión, tamaño, color.] dress.","She bought a long red cotton dress.","She bought a beautiful red cotton dress."],
+/* hd · solo: confundir el auxiliar con el verbo principal (do / have), comerse uno */
+"I [don't|don't do|hd|Do es el verbo principal (hacer los deberes) y don't solo el auxiliar. Hay que escribir los dos: don't + do.] my homework at weekends.",
+"What [do you|do you do|hd|Primer do = auxiliar, segundo do = verbo principal. No te comas uno de los dos: What do you do?] on Sundays?",
+"She [doesn't|doesn't have|hd|Doesn't es solo el auxiliar. Falta el verbo principal have (tomar el desayuno): doesn't + have.] breakfast before school.",
+"[Did you|Did you have|hd|Did es solo el auxiliar. Falta el verbo principal have (pasárselo bien): Did you have…?] a good time at the party?",
+"Where [you have|do you have|hd|Falta el auxiliar. Have es el verbo principal (tomar la comida), así que en la pregunta también necesita do: do + you + have.] lunch?",
+"We [didn't|didn't do|hd|Didn't es solo el auxiliar. Falta el verbo principal do: didn't + do.] anything special yesterday.",
+/* sv */
+"There [is|are|sv|Dice es plural (one die, two dice), así que se dice there are.] three dice in the box.",
+"Her clothes [is|are|sv|Clothes siempre es plural, aunque en español digamos 'la ropa'.] always very colourful.",
+"My parents [is|are|sv|Parents es plural, por tanto el verbo es are.] packing the suitcases now.",
+"Everybody [are|is|sv|Everybody, everyone y nobody son singulares aunque signifiquen 'todos'.] ready to go.",
+"[Was|Were|sv|El sujeto 'you and your friends' es plural: were. (You siempre lleva were.)] you and your friends in Paris last summer?",
+"The news [are|is|sv|News termina en -s pero es incontable y singular: the news is.] very bad today.",
+/* s3 */
+"She [play|plays|s3|En presente simple afirmativo, he / she / it añade -s al verbo.] chess every Sunday.",
+"He [don't|doesn't|s3|Con he / she / it el auxiliar es doesn't (does + not).] like flying.",
+"Does your sister [likes|like|s3|Tras does el verbo va en base: la -s ya está en does.] this hat?",
+"My brother [have|has|s3|Have es irregular: he / she / it → has.] a new backpack.",
+"He [watchs|watches|s3|Los verbos acabados en -ch, -sh, -s, -x, -o añaden -es, no solo -s.] TV every night.",
+"My sister [studys|studies|s3|Consonante + y cambia a -ies: study → studies.] French at school.",
+/* vd */
+"I love [a lot travelling|travelling a lot|vd|Verbo y objeto van pegados. A lot (cantidad) va al final.].",
+["She bought [yesterday a dress|a dress yesterday|vd|El objeto (a dress) va pegado al verbo. El tiempo (yesterday) va al final.] in a small shop.","Yesterday she bought a dress in a small shop."],
+"He plays [very well chess|chess very well|vd|No se separan verbo y objeto: play + chess + adverbio de modo.].",
+"We visited [every year Rome|Rome every year|vd|Primero el objeto (Rome), después la frecuencia (every year).].",
+"We bought [in Paris a hat|a hat in Paris|vd|El objeto va pegado al verbo; el lugar va después.].",
+"She watches [every night TV|TV every night|vd|Verbo + objeto (TV) juntos; la frecuencia al final.].",
+/* tn */
+"Yesterday we [have visited|visited|tn|Yesterday es un momento terminado del pasado: past simple, nunca present perfect.] the castle.",
+"I [live|have lived|tn|For ten years = empezó en el pasado y sigue ahora: present perfect.] in this city for ten years.",
+"Look! It [rains|is raining|tn|Look! indica que ocurre ahora mismo: present continuous.] and we haven't got umbrellas.",
+"I [didn't see|haven't seen|tn|Yet con acciones que aún no han ocurrido: present perfect.] that film yet.",
+"He [is knowing|knows|tn|Know es un verbo de estado y no se usa en continuo.] the answer.",
+"By the time we got to the airport, the plane [left|had left|tn|El avión salió ANTES de que llegáramos: past perfect (had + participio).].",
+/* ir */
+"Last year we [goed|went|ir|Go es irregular: went. No se añade -ed.] to Lisbon.",
+"She [buyed|bought|ir|Buy es irregular: bought.] a beautiful scarf.",
+"I [taked|took|ir|Take es irregular: took.] hundreds of photos.",
+"He [catched|caught|ir|Catch es irregular: caught.] the bus just in time.",
+"We [thinked|thought|ir|Think es irregular: thought.] it was a good idea.",
+"They [eated|ate|ir|Eat es irregular: ate.] paella for lunch.",
+/* pp */
+"I have [saw|seen|pp|Present perfect = have + participio. El participio de see es seen; saw es el pasado simple.] that film twice.",
+"She has [wrote|written|pp|El participio de write es written, no wrote.] a long blog post.",
+["Have you ever [went|been|pp|Have been to = haber estado en un sitio (experiencia). Went es pasado simple, no participio.] to London?","Have you ever gone to London?"],
+"We haven't [eat|eaten|pp|Tras have / has va el participio: eaten.] paella yet.",
+"He has [did|done|pp|Has + participio: done. Did es pasado simple.] his homework.",
+"She has already [gave|given|pp|Has + participio: given.] me the tickets.",
+/* hb */
+"When I was a child, I [use to|used to|hb|Hábito del pasado: used to, con -d en afirmativa.] play Monopoly every weekend.",
+"I [didn't used to|didn't use to|hb|Tras didn't, used pierde la -d: didn't use to.] like travelling by plane.",
+"I'm not used to [wake|waking|hb|Be used to + -ing: estar acostumbrado a hacer algo.] up so early.",
+"It was hard, but now I'm used to [wear|wearing|hb|Be used to + -ing.] a uniform.",
+"Did you [used to|use to|hb|En preguntas con did, used pierde la -d: did you use to.] play chess?",
+"My grandma [is used to|used to|hb|Used to + base = hábito del pasado (ya no); be used to + -ing = estar acostumbrada.] live in Madrid, but now she lives in Rome.",
+/* cn */
+"I was tired [because of|because|cn|Because of + sustantivo; because + sujeto + verbo.] I got up at five.",
+"The train was late, [because|so|cn|So introduce el resultado (perdimos el autobús); because introduce la causa.] we missed the bus.",
+"I love fashion. [In the other hand|On the other hand|cn|La expresión fija es on the other hand.], I don't have much money.",
+"First we visited the museum. [At the end|Then|cn|At the end es el final de algo; para la secuencia, then / after that.], we had lunch.",
+"Although it was cold, [but we|we|cn|Con although no se usa but: ya expresa el contraste.] went to the beach.",
+"[Despite|Although|cn|Despite + sustantivo / -ing; although + sujeto + verbo.] it was raining, we went out.",
+/* vc */
+"I [did|took|vc|Con photos se usa take a photo, nunca do.] a lot of photos in Rome.",
+"We [made|took|vc|Se dice take a trip.] a trip to Prague.",
+"Let's [do|play|vc|Con juegos se usa play: play a board game.] a board game tonight.",
+"I need some [advices|advice|vc|Advice es incontable: no tiene plural.] about what to wear.",
+"My [luggages are|luggage is|vc|Luggage es incontable: no tiene plural y el verbo va en singular.] very heavy.",
+"He [won|beat|vc|Win + competición (win a game); beat + persona (beat me).] me at chess."
+];
+const PARA=[["Blog · travel","Last summer I [goed|went|ir|Go es irregular: went.] to Edinburgh with my family. We [taked|took|ir|Take es irregular: took.] hundreds of photos and [visited every day a castle|visited a castle every day|vd|Verbo + objeto pegados; la frecuencia al final.]. My brother [don't|doesn't|s3|He pide doesn't.] like walking, [because|so|cn|So = resultado.] he was always tired. My parents [is|are|sv|Parents es plural.] used to [walk|walking|hb|Be used to + -ing.] a lot, but I'm not. We have [ate|eaten|pp|Have + participio.] fish and chips three times! I [use to|used to|hb|Used to con -d.] hate fish, but now I love it."],
+["Article · fashion","Today, many teenagers [buys|buy|sv|Teenagers es plural: buy sin -s.] second-hand clothes. There are two main reasons. Firstly, it [are|is|sv|It + is.] cheaper: a good jacket [cost|costs|s3|Jacket = it: costs con -s.] half the price. Although some people think old clothes are dirty, [but||cn|Con although no se usa but.] many shops wash everything. [In the other hand|On the other hand|cn|Expresión fija.], fast fashion [have|has|sv|Fashion es singular: has.] a big problem: it [use|uses|s3|It + uses.] a lot of water. Last year, a survey [has shown|showed|tn|Last year = past simple.] that most young people [is|are|sv|People es plural: are.] worried about it. [At the end|In conclusion|cn|Para concluir un texto: in conclusion.], second-hand fashion is a smart choice."],
+["Blog · games","I love board games. My friends and I [play usually|usually play|wa|En presente simple el adverbio va delante del verbo principal.] on Saturdays at my house. Last week we [didn't|didn't have|hd|Falta el verbo principal: didn't + have.] much time, so we played a [game short|short game|wj|El adjetivo va antes del sustantivo.]. My brother [always is|is always|wa|Detrás de be.] the winner! He [plays very well chess|plays chess very well|vd|Verbo + objeto pegados.] and I [don't never|never|wa|Never ya es negativo: no se combina con don't.] beat him. We [went yesterday to the park|went to the park yesterday|we|Lugar antes que tiempo.] to relax. Who [did win|won|wo|Who es el sujeto: sin auxiliar.] the last game? My brother, of course!"],
+["Article · fashion 2","Nowadays, many teenagers [wear always|always wear|wa|Delante del verbo principal en presente simple.] trainers to school. Brands [do|make|vc|Make money (ganar dinero); do se usa para tareas.] a lot of money with them. For example, a [leather white nice|nice white leather|wj|Opinión → color → material.] jacket is very expensive. Teenagers [don't|don't have|hd|Falta el verbo principal: don't + have.] much money, so they look for cheap clothes. My sister [bought in a market a skirt|bought a skirt in a market|vd|Verbo + objeto pegados.] and she wears it [today at school|at school today|we|Lugar antes que tiempo.]. [In the other hand|On the other hand|cn|Expresión fija.], she [never is|is never|wa|Detrás de be.] late for class."]];
+/* Ordena la frase: [frase, categoría, explicación, alternativas] */
+const ORD=[
+['Where are you going on holiday?','wo','Wh- + auxiliar / be + sujeto + verbo.'],
+['What do you want for your birthday?','wo','Wh- + auxiliar do + sujeto + verbo base.'],
+['Who broke the window?','wo','Who es el sujeto: no lleva auxiliar.'],
+['What makes you happy?','wo','What es el sujeto: no lleva auxiliar.'],
+['She asked me where I had bought my T-shirt.','wo','Pregunta indirecta: orden de afirmación y un tiempo atrás (had bought).'],
+['She has always loved fashion.','wa','Con auxiliar (has), el adverbio va detrás del primer auxiliar: has always loved.'],
+['We never go to the cinema on Mondays.','wa','Never va delante del verbo principal en presente simple.'],
+["They don't usually play on weekdays.",'wa',"Con don't el adverbio va detrás del auxiliar."],
+['He is always late for school.','wa','Detrás de be.'],
+['I have never been to London.','wa','Detrás del primer auxiliar (have).'],
+['Do you do your homework in the evening?','hd','Do auxiliar + sujeto + do verbo principal: se escriben los dos.'],
+['What do you do on Sundays?','hd','What + auxiliar do + sujeto + verbo principal do.'],
+["She doesn't have breakfast at home.",'hd',"Doesn't (auxiliar) + have (verbo principal en base)."],
+['Did you have a good time in Rome?','hd','Did (auxiliar) + sujeto + have (principal).'],
+['She bought a beautiful long red dress.','wj','Opinión → tamaño → color → sustantivo.'],
+['He wore a small black leather jacket.','wj','Tamaño → color → material → sustantivo.'],
+['He worked hard yesterday.','we','Modo → tiempo.'],
+['We played in the park yesterday.','we','Lugar antes que tiempo.'],
+['I like board games very much.','vd','Verbo + objeto juntos; very much al final.']
+].map(([s,c,y,a])=>({s,c,y,alts:a||[]}));
 function parse(t){const segs=[],errs=[],toks=[];let last=0;const add=(x,e)=>x.split(/(\s+)/).forEach(y=>y&&toks.push({t:y,e,w:/[A-Za-z0-9]/.test(y)}));
-t.replace(/\[([^|\]]*)\|([^|\]]*)\|(\w+)\]/g,(m,w,r,c,i)=>{if(i>last){segs.push({t:t.slice(last,i)});add(t.slice(last,i),null)}errs.push({w,r,c});segs.push({t:w,r,e:errs.length-1});add(w,errs.length-1);last=i+m.length;return m});
+t.replace(/\[([^|\]]*)\|([^|\]]*)\|(\w+)(?:\|([^\]]*))?\]/g,(m,w,r,c,y,i)=>{if(i>last){segs.push({t:t.slice(last,i)});add(t.slice(last,i),null)}errs.push({w,r,c,y});segs.push({t:w,r,e:errs.length-1});add(w,errs.length-1);last=i+m.length;return m});
 segs.push({t:t.slice(last)});add(t.slice(last),null);const cl=x=>x.replace(/\s+/g,' ').replace(/\s+([,.!?;:])/g,'$1').trim();
 return{errs,toks,wrong:cl(segs.map(x=>x.t).join('')),right:cl(segs.map(x=>x.e==null?x.t:x.r).join(''))}}
 const ITEMS=SENT.map(x=>Array.isArray(x)?{...parse(x[0]),alts:x.slice(1)}:parse(x)),PARAS=PARA.map(p=>({n:p[0],...parse(p[1])}));
@@ -317,7 +368,6 @@ const EXAM=[['🫀 Parts of the Body','neck=cuello|wrist=muñeca|ankle=tobillo|k
 ['🎲 Games','to assess=evaluar|to boost=impulsar|to cheat=hacer trampas|to daydream=soñar despierto|to draw a conclusion=sacar una conclusión|figure out=averiguar|to focus=concentrarse|to gamble=apostar|make an effort=esforzarse|to read someone\'s mind=leer la mente|to recall=recordar|to recognise=reconocer|to remind=recordar a alguien|to suspect=sospechar|take turns=turnarse|think over=reflexionar|dice=dados|board game=juego de mesa|score=puntuación|level=nivel|challenge=reto|strategy=estrategia|sound effects=efectos de sonido|snake=serpiente|ladder=escalera|to replace=sustituir|to discover=descubrir','opponent=oponente|to bluff=farolear|tournament=torneo|to outwit=ser más listo que|addictive=adictivo'],
 ['🧳 Travel','airline=aerolínea|to board=embarcar|check in=facturar|crew=tripulación|delay=retraso|fabulous=fabuloso|flight attendant=auxiliar de vuelo|full board=pensión completa|gate=puerta de embarque|half board=media pensión|high season=temporada alta|in advance=con antelación|lively=animado|luxurious=lujoso|on a budget=con presupuesto ajustado|overcrowded=abarrotado|rate=tarifa|unforgettable=inolvidable|within walking distance=a poca distancia andando|youth hostel=albergue juvenil|to book=reservar|accommodation=alojamiento|tour=excursión|destination=destino','itinerary=itinerario|landmark=lugar emblemático|jet lag=desfase horario|layover=escala|off the beaten track=fuera de los circuitos turísticos'],
 ['🤓 Word fields','performance=actuación / rendimiento|performer=artista|perform a task=realizar una tarea|perform well=rendir bien|performing arts=artes escénicas|end=terminar / final|finish=acabar|grow bored of=aburrirse de|grow tired of=cansarse de|grow old=envejecer|grow up=crecer|grow a beard=dejarse barba|grow a business=hacer crecer un negocio|lose=perder|loose=suelto|rip=rasgar|pop=estallar|crash=chocar|splash=salpicar|bang=estruendo|tick=tictac / marca|choice=elección|choose=elegir','']].map(([t,a,b])=>[t,a.split('|'),b?b.split('|'):[]]);
-const EXAM_OLD=[['🎭 Adjectives: People & Things','nasty cheerful anxious amusing neat messy careless courageous awful ridiculous ancient truthful thrilling imaginary incredible predictable efficient ordinary sensible sensitive proud pleasant relaxed giant unimportant hopeful'.split(' '),'stubborn arrogant witty tedious gullible resilient meticulous'.split(' ')],['🏕 Travel & Camping',['put up','build','pack','plan','go','spend','make','book','take','find','a passport','at the check-in desk','luggage','departure','at the gate','a campsite','backpacking','flight'],['itinerary','a boarding pass','accommodation','sightseeing']]];
 const DIFF=[['Tono','Informal, como hablando con un amigo','Neutro, más serio'],['Contracciones',`Sí: I'm, didn't, it's`,'Mejor no: I am, did not'],['Personas','I, you, we','people, teenagers, they'],['Estructura','Hook → story → tips → question','Intro → counter-argument → 2 reasons in favour → conclusion'],['Conectores','so, because, then, anyway','however, for example, in addition, in conclusion'],['Final','Pregunta a los lectores','Conclusión y recomendación']];
 const VOC={travel:['suitcase=maleta','luggage=equipaje','passport=pasaporte','ticket=billete','flight=vuelo','trip=viaje','journey=trayecto','hotel=hotel','sightseeing=turismo','souvenir=recuerdo','delay=retraso','book=reservar','pack=hacer la maleta','abroad=al extranjero','destination=destino'],
 fashion:['jacket=chaqueta','trainers=zapatillas','scarf=bufanda','fashionable=de moda','second-hand=de segunda mano','brand=marca','fit=quedar (talla)','suit=sentar bien','wear=llevar puesto','try on=probarse','trend=tendencia','style=estilo','outfit=conjunto','cheap=barato','sleeve=manga'],
@@ -327,7 +377,7 @@ const IRR='be,was / were,been;buy,bought,bought;come,came,come;do,did,done;drink
 const CN=['also','but','however','although','because','so','first','then','after that','finally','in the end','anyway','in addition','on the other hand','as a result','firstly','secondly','for example','such as','in conclusion','to sum up','by the way'];
 const ing=v=>({get:'getting',be:'being',run:'running'})[v]||v.replace(/e$/,'')+'ing';
 const s3=v=>v=='have'?'has':/(s|sh|ch|x|o)$/.test(v)?v+'es':v+'s';
-const REGV={goed:'went',buyed:'bought',eated:'ate',taked:'took',maked:'made',comed:'came',gived:'gave',runned:'ran',writed:'wrote',haved:'had',winned:'won',wored:'wore',finded:'found',losed:'lost',thinked:'thought',knowed:'knew',drinked:'drank',bringed:'brought',payed:'paid',speaked:'spoke'};
+const REGV={goed:'went',buyed:'bought',eated:'ate',taked:'took',maked:'made',comed:'came',gived:'gave',runned:'ran',writed:'wrote',haved:'had',winned:'won',wored:'wore',finded:'found',losed:'lost',thinked:'thought',knowed:'knew',drinked:'drank',bringed:'brought',payed:'paid',speaked:'spoke',catched:'caught'};
 const BASE={went:'go',saw:'see',ate:'eat',took:'take',had:'have',made:'make',bought:'buy',came:'come',got:'get',gave:'give',ran:'run',wrote:'write',found:'find',lost:'lose',won:'win',wore:'wear'};
 const PPM={went:'gone/been',saw:'seen',ate:'eaten',took:'taken',did:'done',wrote:'written',ran:'run',came:'come',was:'been',were:'been',wore:'worn',began:'begun',drank:'drunk',flew:'flown',gave:'given',spoke:'spoken',drove:'driven',swam:'swum',sang:'sung',forgot:'forgotten',broke:'broken',chose:'chosen'};
 const V3='go|do|like|love|play|want|live|work|travel|wear|need|think|know|make|take|get|come|use|look|buy|enjoy|prefer|watch|visit|speak|eat|have|read';
@@ -345,7 +395,20 @@ const RULES=[
 [/\b(did|didn't|did not)\s+([a-z]{3,}ed)\b/gi,'ir',(m,a,v)=>/^(need|feed|speed)ed?$/.test(L(v))||/^(need|feed|speed)$/.test(L(v))?m:null],
 [/\b(have|has|haven't|hasn't)\s+(went|saw|ate|took|did|wrote|ran|came|was|were|wore|began|drank|flew|gave|spoke|drove|swam|sang|forgot|broke|chose)\b/gi,'pp',(m,a,v)=>a+' '+PPM[L(v)]],
 [/\b(like|love|enjoy|play|visit|buy|wear|prefer)\s+(very much|a lot)\s+((?:the|my|your|his|her|our|their|a|an|board|[a-z]+ing)\b(?:\s+\w+)?)/gi,'vd',(m,v,adv,o)=>v+' '+o+' '+adv],
-[/\b(usually|always|often|never|sometimes)\s+(am|is|are)\b/gi,'wo',(m,a,b)=>b+' '+a],
+[/\b(usually|always|often|never|sometimes)\s+(am|is|are|was|were)\b/gi,'wa',(m,a,b)=>b+' '+a],
+[/\b(I|we|they|you)\s+(go|play|eat|wear|travel|visit|have|do)\s+(always|usually|often|never)\b/gi,'wa',(m,s,v,a)=>s+' '+a+' '+v],
+[/\b(he|she|it)\s+(?!is\b|was\b|has\b|does\b)(\w+s)\s+(always|usually|often|never)\b/gi,'wa',(m,s,v,a)=>s+' '+a+' '+v],
+[/\b(don't|doesn't|didn't)\s+never\b/gi,'wa',(m,a)=>a+' ever'],
+[/\b(do|does|did)\s+(a\s+)?(shower|bath|breakfast|lunch|dinner)\b/gi,'vc',(m,v,a,o)=>({do:'have',does:'has',did:'had'})[L(v)]+' '+(a||'')+o],
+[/\b(don't|doesn't|didn't|do not|does not|did not)\s+(has|had|does|did)\b/gi,'s3',(m,a,v)=>a+' '+({has:'have',had:'have',does:'do',did:'do'})[L(v)]],
+[/\b(do|does|did)\s+(you|he|she|it|we|they|I)\s+(has|had|does|did)\b/gi,'s3',(m,a,s,v)=>a+' '+s+' '+({has:'have',had:'have',does:'do',did:'do'})[L(v)]],
+[/\b(don't|doesn't|didn't)\s+(my|your|his|her|our|their|breakfast|lunch|dinner|homework)\b/gi,'hd',null],
+[/\b(jacket|dress|hat|scarf|shirt|bag|house|city|film|game|car|bike)\s+(red|blue|black|white|green|yellow|big|small|new|old|beautiful|cheap)\b/gi,'wj',(m,n,a)=>a+' '+n],
+[/\b(blue|red|black|white|green|yellow|brown|grey|pink)\s+(big|small|long|short|beautiful|lovely|nice|new|old|large|little|tall)\b/gi,'wj',(m,c,a)=>a+' '+c],
+[/\b(reds|blues|blacks|whites|greens|yellows|bigs|smalls|beautifuls|nices|olds)\b/gi,'wj',m=>m.slice(0,-1)],
+[/\b(went|arrived|played|stayed|met|studied|worked|ate)\s+(yesterday|last\s+\w+|every\s+\w+)\s+((?:to|at|in)\s+(?:the\s+|a\s+)?\w+)/gi,'we',(m,v,t,pl)=>v+' '+pl+' '+t],
+[/\b(speak|play|know|study)\s+(very well|well|very much|a lot)\s+(English|Spanish|French|chess|tennis|football|basketball)\b/gi,'we',(m,v,a,o)=>v+' '+o+' '+a],
+[/\b(play|plays|played|speak|speaks|sing|sings|sang|dance|dances|cook|cooks)\s+good\b/gi,'we',(m,v)=>v+' well'],
 [/\b(I|we|they|you|he|she|it)\s+not\s+(like|go|play|have|want|know|think|speak|travel|wear)\b/gi,'wo',(m,s,v)=>s+(/^(he|she|it)$/i.test(s)?" doesn't ":" don't ")+v],
 [/\b(where|what|when|why|how|which)\s+(I|you|he|she|it|we|they)\s+(are|is|am|do|does|did|can|have|has|will|was|were)\b/gi,'wo',(m,w,s,a)=>w+' '+a+' '+s,1],
 [/\b(am|is|are|get|got)\s+used\s+to\s+(go|travel|play|wear|eat|have|live|be|wake|get|do|read|walk)\b/gi,'hb',(m,a,v)=>a+' used to '+ing(L(v))],
@@ -370,7 +433,51 @@ const RULES=[
 const norm=x=>x.toLowerCase().replace(/[’]/g,"'").replace(/[.,!?;:]/g,'').replace(/\s+/g,' ').trim();
 const rec=(c,ok)=>{const o=DB.st[c]||(DB.st[c]={ok:0,n:0});o.n++;if(ok)o.ok++;save();meter()};
 function meter(){let a=0,n=0;Object.values(DB.st).forEach(o=>{a+=o.ok;n+=o.n});$('#meter').innerHTML=n?`Aciertos <b>${a}/${n}</b>`:''}
-/* VIEWS */
+const X=s=>`<span class="x">${s}</span>`,V=s=>`<span class="v">${s}</span>`;
+const RULEBOOK=`<details><summary>📘 Reglas clave antes de practicar: preguntas, adverbios, adjetivos y have / do</summary><div class="inner rb">
+<h4>0 · Orden en las preguntas</h4>
+<div class="tbl-wrap"><table><tr><th>Tipo</th><th>Orden</th><th>Ejemplo</th></tr>
+<tr><td>Pregunta normal</td><td>(Wh-) + auxiliar / be + SUJETO + verbo base</td><td>${V('Where are you going? What do you want?')}<br>${X('Where you are going? What you want?')}</td></tr>
+<tr><td>Wh- es el SUJETO</td><td>Wh- + verbo. Sin auxiliar y sin inversión.</td><td>${V('Who broke the window? What makes you happy?')}<br>${X('Who did break the window?')}</td></tr>
+<tr><td>Wh- es el OBJETO</td><td>Wh- + auxiliar + sujeto + verbo</td><td>${V('Who did you see? What did she buy?')}</td></tr>
+<tr><td>Pregunta indirecta</td><td>Orden de afirmación, sin do, y un tiempo atrás si el verbo de arriba está en pasado</td><td>${V('She asked me where I had bought my T-shirt.')}<br>${X('She asked me where did I buy my T-shirt.')}</td></tr></table></div>
+<p class="lead" style="margin-top:6px">Truco: pregúntate «¿quién hace la acción?». Si el pronombre interrogativo ya es quien la hace (el sujeto), no hace falta auxiliar.</p>
+<h4>1 · Adverbios de frecuencia (always, usually, often, sometimes, never, ever, rarely, hardly ever)</h4>
+<div class="tbl-wrap"><table><tr><th>Dónde</th><th>Regla</th><th>Ejemplo</th></tr>
+<tr><td>Detrás de be</td><td>am / is / are / was / were + adverbio</td><td>${V('She is always late.')}<br>${X('She always is late.')}</td></tr>
+<tr><td>Delante del verbo principal (tiempos simples)</td><td>Sujeto + adverbio + verbo</td><td>${V('I usually have breakfast at eight.')}<br>${X('I have usually breakfast. / I play always chess.')}</td></tr>
+<tr><td>Detrás del 1.er auxiliar o modal</td><td>have / has / will / can / am + adverbio + resto</td><td>${V('I have never been to Rome. She can usually win. I am always studying.')}<br>${X('I never have been to Rome.')}</td></tr>
+<tr><td>Negativa</td><td>don't / doesn't + adverbio + verbo base</td><td>${V("I don't usually eat meat.")}</td></tr>
+<tr><td>Never ya es negativo</td><td>No se combina con don't / doesn't</td><td>${V('He never plays sport.')}<br>${X("He doesn't never play sport.")}</td></tr>
+<tr><td>Pregunta</td><td>Auxiliar + sujeto + adverbio + verbo</td><td>${V('Do you often travel? Have you ever flown?')}</td></tr>
+<tr><td>Principio de frase</td><td>Sometimes, usually, normally y often pueden empezar la frase; always y never no.</td><td>${V('Sometimes I wear a hat.')} ${X('Never I eat meat.')}</td></tr></table></div>
+<p class="lead" style="margin-top:6px">Truco: busca el verbo be o un auxiliar. Si lo hay, el adverbio va detrás. Si no lo hay, el adverbio va delante del verbo.</p>
+<h4>2 · Adverbios y complementos al final de la frase</h4>
+<div class="tbl-wrap"><table><tr><th>Orden</th><th>Qué responde</th><th>Ejemplo</th></tr>
+<tr><td>1. Manner</td><td>¿Cómo? (carefully, well, quickly, hard)</td><td rowspan="3">${V('He drove carefully to the airport yesterday.')}<br>${V('She did the test well yesterday.')}<br>${X('We went yesterday to Italy.')} → ${V('We went to Italy yesterday.')}</td></tr>
+<tr><td>2. Place</td><td>¿Dónde? (to the airport, in the park, at home)</td></tr>
+<tr><td>3. Time</td><td>¿Cuándo? (yesterday, last summer, every day)</td></tr></table></div>
+<ul class="tight" style="margin-top:8px"><li>El verbo y su objeto van pegados: ${V('I like music very much.')} ${X('I like very much music.')}</li>
+<li>Well, hard, fast y very much modifican al verbo: ${V('He plays well.')} ${X('He plays good.')} (good es adjetivo: a good player).</li>
+<li>Hard ≠ hardly: she works hard = trabaja mucho; she hardly works = casi no trabaja.</li></ul>
+<h4>3 · Adjetivos: posición, orden y cantidad</h4>
+<ul class="tight"><li>Van <b>antes</b> del sustantivo: ${V('a red jacket')} ${X('a jacket red')}.</li>
+<li>No tienen plural ni género: ${V('two red jackets')} ${X('two reds jackets')}.</li>
+<li>Con be van detrás: ${V('The jacket is red.')}</li>
+<li>Con very / really siguen antes del sustantivo: ${V('a very interesting game')}.</li>
+<li>Máximo 3 adjetivos seguidos; si tienes más, elige los mejores.</li>
+<li>Edad como adjetivo: ${V('a ten-year-old boy')} ${X('a ten years old boy')}.</li></ul>
+<div class="tbl-wrap" style="margin-top:8px"><table><tr><th>1 Opinion</th><th>2 Size</th><th>3 Age</th><th>4 Shape</th><th>5 Colour</th><th>6 Origin</th><th>7 Material</th><th>+ Noun</th></tr>
+<tr><td>lovely, boring</td><td>big, small, long</td><td>old, new</td><td>round, square</td><td>red, black</td><td>Italian, French</td><td>leather, wooden</td><td>jacket, cabin</td></tr>
+<tr><td colspan="8">${V('a lovely small old round red Italian leather bag')} (solo como ejemplo del orden, ¡en una frase real no pongas tantos!)<br>${V('a big blue bag')} ${X('a blue big bag')} · ${V('a lovely French city')} ${X('a French lovely city')} · ${V('a black leather jacket')} ${X('a leather black jacket')}</td></tr></table></div>
+<h4>4 · Have y do: verbo principal Y auxiliar a la vez</h4>
+<p class="lead">Have y do tienen dos trabajos: pueden ser el <b>verbo principal</b> (tener / tomar, hacer) y también el <b>auxiliar</b> de la negativa y de la pregunta. Cuando hacen los dos trabajos en la misma frase, hay que escribir las dos palabras. El error típico es comerse una de ellas.</p>
+<div class="tbl-wrap"><table><tr><th>Forma</th><th>Con do (hacer)</th><th>Con have (tener, tomar)</th></tr>
+<tr><td>Afirmativa</td><td>I do my homework.</td><td>I have breakfast.</td></tr>
+<tr><td>Negativa</td><td>${V("I don't do my homework.")}<br>${X("I don't my homework.")}</td><td>${V("She doesn't have breakfast.")}<br>${X("She doesn't breakfast.")}</td></tr>
+<tr><td>Pregunta</td><td>${V('What do you do on Sundays?')}<br>${X('What do you on Sundays? / What you do?')}</td><td>${V('Did you have a good time?')} ${V('Where do you have lunch?')}<br>${X('Did you a good time? / Where you have lunch?')}</td></tr></table></div>
+<p class="lead" style="margin-top:8px"><b>Truco:</b> en una negativa o pregunta cuyo significado sea «hacer» o «tener / tomar», cuenta los verbos: necesitas dos (auxiliar + principal).</p>
+</div></details>`;
 function renderGenre(id){const G=GEN[id];$('#'+id).innerHTML=`<div class="sec-head"><h2>${G.name}</h2><p>${G.lead}</p></div>
 <div class="split"><div class="model is-${id}"><h3 class="mtitle">${G.parts[0][2]}</h3>${G.parts.slice(1).map(p=>`<p class="p-${p[0]}"><span class="seg">${p[2]}</span></p>`).join('')}</div>
 <div class="note-list">${G.parts.map(p=>`<div class="note p-${p[0]}"><span class="dot"></span><div><b>${p[1]}</b><br><span class="small muted">${p[3]}</span></div></div>`).join('')}</div></div>
@@ -382,24 +489,32 @@ function renderVocab(){$('#vocab').innerHTML=`<div class="sec-head"><h2>Vocabula
 <div><h3>Vocabulario del examen</h3><p class="muted small">Todo esto entra en el examen. Las palabras con ⭐ son B2 extra (reto para los más fuertes).</p><div class="grid g2" style="margin-top:10px">${EXAM.map(([t,a,b])=>`<div class="card"><h3>${t}</h3><div class="row" style="margin-top:10px;gap:6px">${a.map(w=>T(w,'acc')).join('')}</div>${b.length?`<p class="up" style="margin-top:14px">⭐ B2 extra</p><div class="row" style="margin-top:8px;gap:6px">${b.map(w=>T(w,'warn')).join('')}</div>`:''}</div>`).join('')}</div></div>
 <div class="grid g3">${Object.entries(VOC).map(([k,a])=>`<div class="card"><h3>${TOP[k]}</h3><div class="row" style="margin-top:10px;gap:6px">${a.map(x=>{const[w,g]=x.split('=');return`<span class="chip"><b>${w}</b> ${g}</span>`}).join('')}</div></div>`).join('')}</div>
 <div><h3>Tenses &amp; habits</h3><div class="tbl-wrap" style="margin-top:10px"><table><tr><th>Tense</th><th>Form</th><th>Example</th></tr>${TEN.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</table></div></div>
-<div><h3>Word order</h3><div class="tbl-wrap" style="margin-top:10px"><table><tr><th>Type</th><th>Order</th><th>Example</th></tr><tr><td>Affirmative</td><td>S + V + object + place + time</td><td>I bought a jacket in Madrid last week.</td></tr><tr><td>Negative</td><td>S + auxiliary + not + base verb</td><td>I didn't buy a jacket in Madrid.</td></tr><tr><td>Question</td><td>(Wh-) + auxiliary + S + base verb</td><td>Where did you buy it?</td></tr><tr><td>Never split</td><td>verb + object stay together</td><td>I like music very much. ✗ I like very much music.</td></tr></table></div></div>
+<div><h3>Word order</h3><div class="tbl-wrap" style="margin-top:10px"><table><tr><th>Type</th><th>Order</th><th>Example</th></tr><tr><td>Affirmative</td><td>S + V + object + place + time</td><td>I bought a jacket in Madrid last week.</td></tr><tr><td>Negative</td><td>S + auxiliary + not + base verb</td><td>I didn't buy a jacket in Madrid.</td></tr><tr><td>Question</td><td>(Wh-) + auxiliary + S + base verb</td><td>Where did you buy it?</td></tr><tr><td>Never split</td><td>verb + object stay together</td><td>I like music very much. ✗ I like very much music.</td></tr><tr><td>Frequency adverbs</td><td>after be / after the 1st auxiliary / before the main verb</td><td>She is always late. I have never been. I usually have breakfast.</td></tr><tr><td>Adverbs at the end</td><td>manner → place → time</td><td>He drove carefully to the airport yesterday.</td></tr><tr><td>Adjectives</td><td>opinion → size → age → shape → colour → origin → material + noun (max. 3)</td><td>a big blue bag ✗ a blue big bag</td></tr><tr><td>Have / do</td><td>main verb needs an auxiliary: don't have, do you do</td><td>I don't have a bike. What do you do?</td></tr></table></div></div>
 <div><h3>Irregular verbs</h3><div class="tbl-wrap" style="margin-top:10px"><table><tr><th>Base</th><th>Past simple</th><th>Participle</th></tr>${IRR.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join('')}</table></div></div>`}
 /* ERROR CORRECTION */
 let ER={mode:'fix',cat:'all',run:null,pi:0};
 const shuf=a=>a.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
-function renderErrors(){$('#errors').innerHTML=`<div class="sec-head"><h2>Error correction</h2><p>Practica los errores más típicos del B1. Corrige frases sueltas o caza los errores de un texto completo.</p></div>
-<div class="card" style="display:grid;gap:14px"><div class="seg-ctl">${[['fix','Corrige la frase'],['hunt','Caza errores en un texto']].map(([k,l])=>`<button data-m="${k}" aria-pressed="${ER.mode==k}">${l}</button>`).join('')}</div>
+const whyBox=errs=>errs.map(e=>`<span class="why"><span class="chip acc">${CAT[e.c]}</span> ${e.y?`<b>${esc(e.y)}</b>`:''}<span class="rl">${RULE[e.c]}</span></span>`).join('');
+function setupBuild(R){const it=R.items[R.i];if(!it)return;const w=it.s.split(' ').map((t,i)=>({t,i}));let p=shuf(w);if(p.map(x=>x.i).join()==w.map(x=>x.i).join())p.reverse();R.pool=p;R.ans=[]}
+function renderErrors(){$('#errors').innerHTML=`<div class="sec-head"><h2>Error correction</h2><p>Practica los errores más típicos del B1. Corrige frases sueltas, ordena palabras o caza los errores de un texto. Después de cada respuesta verás por qué.</p></div>
+${RULEBOOK}
+<div class="card" style="display:grid;gap:14px"><div class="seg-ctl">${[['fix','Corrige la frase'],['build','Ordena la frase'],['hunt','Caza errores en un texto']].map(([k,l])=>`<button data-m="${k}" aria-pressed="${ER.mode==k}">${l}</button>`).join('')}</div>
 ${ER.mode=='fix'?`<div class="pill-ctl">${[['all','Todos'],...Object.entries(CAT)].map(([k,l])=>`<button data-c="${k}" aria-pressed="${ER.cat==k}">${l}</button>`).join('')}</div>`:''}
-<div><button class="btn" data-act="go">${ER.mode=='fix'?'Empezar 10 frases':'Siguiente texto'}</button></div></div><div id="run">${runHTML()}</div>
+<div><button class="btn" data-act="go">${ER.mode=='hunt'?'Siguiente texto':'Empezar 10 frases'}</button></div></div><div id="run">${runHTML()}</div>
 <div class="card"><h3>Tus aciertos por categoría</h3>${Object.entries(CAT).map(([k,l])=>{const o=DB.st[k]||{ok:0,n:0},p=o.n?Math.round(100*o.ok/o.n):0;return`<div class="crit-row"><span>${l}</span><span class="muted small">${o.ok}/${o.n}</span><div class="bar ${o.n?p>=75?'ok':p>=50?'warn':'bad':''}"><i style="width:${p}%"></i></div></div>`}).join('')}<button class="btn sec sm" data-act="reset" style="margin-top:8px">Borrar progreso</button></div>`;
 const a=$('#ans');if(a)a.focus()}
 function runHTML(){const R=ER.run;if(!R)return'';if(R.hunt)return huntHTML(R);
 if(R.i>=R.items.length)return`<div class="card"><div class="summary-big">${R.ok}/${R.items.length}</div><p>${R.ok>=8?'Excellent!':'Repasa las reglas y prueba otra tanda.'}</p></div>`;
+if(R.build)return buildHTML(R);
 const it=R.items[R.i];return`<div class="card q-wrap"><div class="run-top"><span class="chip">${R.i+1} / ${R.items.length}</span><span class="chip ok">✓ ${R.ok}</span></div><p class="muted small">Hay un error en esta frase. Escríbela bien:</p><p class="q-text">${esc(it.wrong)}</p>
-${R.done?`<div class="feedback ${R.last?'ok':'bad'}"><b>${R.last?'Correct!':'Not quite.'}</b>Tu respuesta: ${esc(R.val)}<br>Correcto: <b>${esc(it.right)}</b>${it.errs.map(e=>`<br><span class="chip acc">${CAT[e.c]}</span> <span class="small">${RULE[e.c]}</span>`).join('')}</div><p><button class="btn" data-act="nxt">Siguiente</button></p>`:`<div class="typed"><input type="text" id="ans" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(it.wrong)}"><button class="btn" data-act="chk">Comprobar</button></div><div class="row" style="margin-top:10px"><button class="btn sec sm" data-act="hint">Pista</button>${R.hint?`<span class="chip warn">${it.errs.map(e=>CAT[e.c]).join(' + ')}</span>`:''}</div>`}</div>`}
+${R.done?`<div class="feedback ${R.last?'ok':'bad'}"><b>${R.last?'Correct!':'Not quite.'}</b>Tu respuesta: ${esc(R.val)}<br>Correcto: <b>${esc(it.right)}</b>${whyBox(it.errs)}</div><p><button class="btn" data-act="nxt">Siguiente</button></p>`:`<div class="typed"><input type="text" id="ans" autocomplete="off" autocapitalize="off" spellcheck="false" value="${esc(it.wrong)}"><button class="btn" data-act="chk">Comprobar</button></div><div class="row" style="margin-top:10px"><button class="btn sec sm" data-act="hint">Pista</button>${R.hint?`<span class="chip warn">${it.errs.map(e=>CAT[e.c]).join(' + ')}</span>`:''}</div>`}</div>`}
+function buildHTML(R){const it=R.items[R.i];
+return`<div class="card q-wrap"><div class="run-top"><span class="chip">${R.i+1} / ${R.items.length}</span><span class="chip ok">✓ ${R.ok}</span></div><p class="muted small">Pulsa las palabras en orden para formar la frase. Pulsa una palabra de tu frase para quitarla.</p>
+<div class="proof" style="min-height:64px;line-height:2.6;padding:10px 14px">${R.ans.map((x,k)=>`<button class="btn sec sm" data-act="bk" data-k="${k}" ${R.done?'disabled':''}>${esc(x.t)}</button> `).join('')||'<span class="muted small">Tu frase…</span>'}</div>
+${R.done?`<div class="feedback ${R.last?'ok':'bad'}"><b>${R.last?'Correct!':'Not quite.'}</b>Tu frase: ${esc(R.val)}<br>Correcto: <b>${esc(it.s)}</b>${whyBox([{c:it.c,y:it.y}])}</div><p><button class="btn" data-act="nxt">Siguiente</button></p>`:`<div class="row" style="margin-top:12px">${R.pool.map((x,k)=>`<button class="btn sm" data-act="bp" data-k="${k}">${esc(x.t)}</button>`).join('')}</div><p style="margin-top:12px"><button class="btn" data-act="bchk" ${R.pool.length?'disabled':''}>Comprobar</button></p>`}</div>`}
 function huntHTML(R){const P=R.p,hit=i=>P.toks.some(t=>t.e===i&&R.sel.has(P.toks.indexOf(t)));
 return`<div class="card"><span class="chip acc">${P.n}</span><p class="muted small" style="margin-top:8px">Haz clic en las palabras incorrectas. Hay <b>${P.errs.length}</b> errores.</p><div class="proof">${P.toks.map((k,i)=>{if(!k.w)return esc(k.t);const s=R.sel.has(i);const c=R.done?(k.e!=null?(hit(k.e)?'found':'missed'):s?'fp':''):s?'sel':'';return`<button class="tok ${c}" data-act="tk" data-i="${i}">${esc(k.t)}</button>`}).join('')}</div>
-${R.done?`<div class="feedback ${R.found==P.errs.length&&!R.fp?'ok':'bad'}"><b>${R.found}/${P.errs.length} errores encontrados${R.fp?` · ${R.fp} falsas alarmas`:''}</b><ul class="tight">${P.errs.map(e=>`<li><s>${esc(e.w)}</s> → <b>${esc(e.r)||'(quitar)'}</b> <span class="chip acc">${CAT[e.c]}</span></li>`).join('')}</ul></div>`:`<p style="margin-top:12px"><button class="btn" data-act="hchk">Comprobar</button></p>`}</div>`}
+${R.done?`<div class="feedback ${R.found==P.errs.length&&!R.fp?'ok':'bad'}"><b>${R.found}/${P.errs.length} errores encontrados${R.fp?` · ${R.fp} falsas alarmas`:''}</b><ul class="hunt-why">${P.errs.map(e=>`<li><s>${esc(e.w)}</s> → <b style="display:inline">${esc(e.r)||'(quitar)'}</b> <span class="chip acc">${CAT[e.c]}</span>${e.y?`<br><span class="small">${esc(e.y)}</span>`:''}</li>`).join('')}</ul></div>`:`<p style="margin-top:12px"><button class="btn" data-act="hchk">Comprobar</button></p>`}</div>`}
 /* LAB */
 let LAB={g:'blog',t:'travel',txt:'',errs:[]};
 function renderLab(){const G=GEN[LAB.g];$('#lab').innerHTML=`<div class="sec-head"><h2>Taller de escritura</h2><p>Escribe, pulsa Analizar y corrige. La revisión es automática y orientativa: tu profe tiene la última palabra.</p></div>
@@ -426,11 +541,14 @@ ${ck.map(x=>`<div class="chk ${x[1]?'ok':'warn'}"><span class="ic">${x[1]?'✓':
 ${cats.length?`<details style="margin-top:12px"><summary>Reglas para repasar</summary><div class="inner">${cats.map(c=>`<p><b>${CAT[c]}</b><br><span class="small">${RULE[c]}</span></p>`).join('')}</div></details>`:''}`}
 /* EVENTS */
 document.addEventListener('click',e=>{const b=e.target.closest('[data-act],[data-g],[data-t],[data-m],[data-c]');if(!b)return;const d=b.dataset,R=ER.run;
-if(d.act=='go'){if(ER.mode=='fix')ER.run={items:shuf(ITEMS.filter(x=>ER.cat=='all'||x.errs.some(y=>y.c==ER.cat))).slice(0,10),i:0,ok:0};else{const p=PARAS[ER.pi++%PARAS.length];ER.run={hunt:1,p,sel:new Set()}}renderErrors()}
+if(d.act=='go'){if(ER.mode=='fix')ER.run={items:shuf(ITEMS.filter(x=>ER.cat=='all'||x.errs.some(y=>y.c==ER.cat))).slice(0,10),i:0,ok:0};else if(ER.mode=='build'){ER.run={build:1,items:shuf(ORD).slice(0,10),i:0,ok:0};setupBuild(ER.run)}else{const p=PARAS[ER.pi++%PARAS.length];ER.run={hunt:1,p,sel:new Set()}}renderErrors()}
 else if(d.m){ER.mode=d.m;ER.run=null;renderErrors()}else if(d.c){ER.cat=d.c;renderErrors()}
 else if(d.act=='hint'){R.hint=1;renderErrors()}
 else if(d.act=='chk'){const it=R.items[R.i];R.val=$('#ans').value;R.last=norm(R.val)==norm(it.right)||(it.alts||[]).some(a=>norm(a)==norm(R.val));if(R.last)R.ok++;it.errs.forEach(x=>rec(x.c,R.last));R.done=1;renderErrors()}
-else if(d.act=='nxt'){R.i++;R.done=0;R.hint=0;renderErrors()}
+else if(d.act=='bp'){R.ans.push(R.pool.splice(+d.k,1)[0]);renderErrors()}
+else if(d.act=='bk'){R.pool.push(R.ans.splice(+d.k,1)[0]);renderErrors()}
+else if(d.act=='bchk'){const it=R.items[R.i];R.val=R.ans.map(x=>x.t).join(' ');R.last=norm(R.val)==norm(it.s)||it.alts.some(a=>norm(a)==norm(R.val));if(R.last)R.ok++;rec(it.c,R.last);R.done=1;renderErrors()}
+else if(d.act=='nxt'){R.i++;R.done=0;R.hint=0;if(R.build)setupBuild(R);renderErrors()}
 else if(d.act=='tk'&&!R.done){const i=+d.i;R.sel.has(i)?R.sel.delete(i):R.sel.add(i);renderErrors()}
 else if(d.act=='hchk'){R.done=1;R.found=0;R.p.errs.forEach((x,i)=>{const h=R.p.toks.some((t,k)=>t.e===i&&R.sel.has(k));rec(x.c,h);if(h)R.found++});R.fp=[...R.sel].filter(k=>R.p.toks[k].e==null).length;renderErrors()}
 else if(d.act=='reset'){DB.st={};save();meter();renderErrors()}
@@ -443,9 +561,10 @@ document.addEventListener('input',e=>{if(e.target.id=='ed'){LAB.txt=e.target.val
 document.addEventListener('keydown',e=>{if(e.key!='Enter'||e.repeat)return;if(e.target.id=='ans'){e.preventDefault();$('[data-act=chk]').click()}else if(e.target==document.body){const n=$('[data-act=nxt]');if(n){e.preventDefault();n.click()}}});
 /* ROUTER */
 const VIEWS=['blog','article','vocab','errors','lab'],RN={blog:()=>renderGenre('blog'),article:()=>renderGenre('article'),vocab:renderVocab,errors:renderErrors,lab:renderLab};
-function route(){const v=VIEWS.includes(location.hash.slice(1))?location.hash.slice(1):'blog';VIEWS.forEach(x=>$('#'+x).classList.toggle('on',x==v));document.querySelectorAll('#tabs a').forEach(a=>a.toggleAttribute('aria-current',a.dataset.v==v)||a.removeAttribute('aria-current'));document.querySelectorAll('#tabs a').forEach(a=>{if(a.dataset.v==v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});RN[v]();window.scrollTo(0,0)}
+function route(){const v=VIEWS.includes(location.hash.slice(1))?location.hash.slice(1):'blog';VIEWS.forEach(x=>$('#'+x).classList.toggle('on',x==v));document.querySelectorAll('#tabs a').forEach(a=>{if(a.dataset.v==v)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});RN[v]();window.scrollTo(0,0)}
 addEventListener('hashchange',route);
 let TH=0;$('#themeBtn').onclick=()=>{TH=(TH+1)%3;const v=['auto','light','dark'][TH];v=='auto'?document.documentElement.removeAttribute('data-theme'):document.documentElement.setAttribute('data-theme',v);$('#themeBtn').textContent='Tema: '+v};
 meter();route();
 </script>
-</body></html>
+</body>
+</html>
